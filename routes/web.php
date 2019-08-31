@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-$timeIt = '2019-09-31';
+$timeIt = '2019-10-31';
 
 if ($timeIt > date('Y-m-d')) {
     // Route::get('/', 'TimerController@index');
