@@ -15,6 +15,12 @@ class CreateContractorsTable extends Migration
     {
         Schema::create('contractors', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('contnumber');
+            $table->string('fullname');
+            $table->text('compname');
+            $table->text('address');
+            $table->string('phone');
+            $table->string('email');
             $table->timestamps();
         });
     }

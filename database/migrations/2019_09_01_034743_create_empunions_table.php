@@ -15,6 +15,7 @@ class CreateEmpunionsTable extends Migration
     {
         Schema::create('empunions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
             $table->timestamps();
         });
     }

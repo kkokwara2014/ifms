@@ -15,6 +15,11 @@ class CreateProcurementsTable extends Migration
     {
         Schema::create('procurements', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('orderid');
+            $table->integer('departmentid');
+            $table->string('amount');
+            $table->string('procdate');
+            $table->text('narration')->nullable();
             $table->timestamps();
         });
     }
