@@ -15,6 +15,12 @@ class CreateExpendituresTable extends Migration
     {
         Schema::create('expenditures', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('ledgerid');
+            $table->integer('budgetid');
+            $table->integer('procurementid');
+            $table->integer('salarypaymentid');
+            $table->string('datecaptured');
+            $table->string('expendtype');
             $table->timestamps();
         });
     }
