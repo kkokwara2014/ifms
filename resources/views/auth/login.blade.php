@@ -115,7 +115,7 @@
         <br>
         <div class="login-box" style="margin-top: -5px">
             <div class="login-logo">
-                <a href="#"><b>IFMS</b> Login</a>
+                <b>IFMS</b> Login
             </div>
             <!-- /.login-logo -->
             <div class="login-box-body">
@@ -125,7 +125,7 @@
                     {{ csrf_field() }}
                     <div class="form-group has-feedback">
                         <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
-                            placeholder="Email" value="{{ old('email') }}">
+                            placeholder="Email" value="{{ old('email') }}" autofocus>
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
