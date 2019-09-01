@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('admin.layout.app')
 
 @section('content')
 
@@ -13,7 +13,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>{{$totalContacts}}</h3>
+              <h3>35</h3>
 
               <p>Contacts</p>
             </div>
@@ -28,7 +28,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-            <h3>{{$totalCommittees}}</h3>
+            <h3>15</h3>
 
               <p>Committee Members</p>
             </div>
@@ -43,7 +43,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-            <h3>{{$totalAdmins}}</h3>
+            <h3>25</h3>
 
               <p>Admins</p>
             </div>
@@ -58,7 +58,7 @@
           <!-- small box -->
           <div class="small-box bg-fuchsia">
             <div class="inner">
-            <h3>{{$totalAbstracts}}</h3>
+            <h3>30</h3>
 
               <p>Abstracts</p>
             </div>
@@ -86,7 +86,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-            <h3>#</h3>
+            <h3>20</h3>
 
               <p>Registrations</p>
             </div>
