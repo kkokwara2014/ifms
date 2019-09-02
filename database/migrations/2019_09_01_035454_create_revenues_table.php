@@ -17,7 +17,7 @@ class CreateRevenuesTable extends Migration
             $table->bigIncrements('id');
             $table->string('revnumber');
             $table->integer('mdaid');
-            $table->decmial('amount',10,2);
+            $table->decimal('amount',10,2);
             $table->text('narration');
             $table->string('revtype');
             $table->string('collectorename');
