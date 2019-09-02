@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contractor extends Model
 {
-    //
+    public function contractadvs(){
+        return $this->hasMany(Contractoradv::class);
+    }
 }

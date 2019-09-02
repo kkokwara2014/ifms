@@ -22,4 +22,7 @@ class Department extends Model
     public function procurements(){
         return $this->hasMany(Procurement::class);
     }
+    public function budgets(){
+        return $this->hasMany(Budget::class);
+    }
 }
