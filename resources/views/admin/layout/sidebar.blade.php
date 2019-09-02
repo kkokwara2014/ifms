@@ -9,6 +9,7 @@
       </div>
       <div class="pull-left info">
         <p>{{ ucfirst(Auth::user()->name) }}</p>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
 
@@ -23,6 +24,21 @@
 
       <li class="treeview">
         <a href="#">
+          <i class="fa fa-edit"></i>
+          <span>Personnel</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href=""><i class="fa fa-circle-o"></i> MDA</a></li>
+          <li><a href=""><i class="fa fa-circle-o"></i> Department</a></li>
+        </ul>
+      </li>
+
+
+      <li class="treeview">
+        <a href="#">
           <i class="fa fa-edit"></i> <span>Forms</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
@@ -30,41 +46,12 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-circle-o"></i> General Elements</a></li>
-          
+
           <li><a href="#"><i class="fa fa-circle-o"></i> Editors</a></li>
         </ul>
       </li>
 
-      {{-- Abstract area --}}
-      <li>
-        <a href="#">
-          <i class="fa fa-file-pdf-o"></i><span> Abstracts</span>
-        </a>
-      </li>
-      {{-- Full Paper area --}}
-      <li>
-        <a href="#">
-          <i class="fa fa-newspaper-o"></i><span> Full Paper</span>
-        </a>
-      </li>
-      {{-- contact area --}}
-      <li>
-        <a href="#">
-          <i class="fa fa-envelope-o"></i><span> Contact</span>
-        </a>
-      </li>
-      {{-- conference committee --}}
-      <li>
-        <a href="#">
-          <i class="fa fa-user-circle-o"></i><span> Conference Committee</span>
-        </a>
-      </li>
-      {{-- Registration Area --}}
-      <li>
-        <a href="#">
-          <i class="fa fa-users"></i><span> Registrations</span>
-        </a>
-      </li>
+
       {{-- Admin Area --}}
       <li>
         <a href="{{ route('admin.admins.all') }}">

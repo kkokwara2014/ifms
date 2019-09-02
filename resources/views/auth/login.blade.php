@@ -2,15 +2,13 @@
 
 @section('content')
 <div class="container">
+    <h1 class="text-center col-xs-12 col-md-12 col-lg-12">Welcome to Integrated Financial Management System</h1>
+    <br>
     <div class="row justify-content-center">
-        <br><br>
-        <h1 class="text-center col-xs-12 col-md-12 col-lg-12">Welcome to Integrated Financial Management System</h1>
-        <br><br>
-        <div><b>IFMS</b> Login</div>
-        <br><br>
+
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header text-center"><h3>{{ __('IFMS Login') }}</h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">

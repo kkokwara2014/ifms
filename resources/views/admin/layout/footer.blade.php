@@ -17,7 +17,7 @@
       $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 3.3.7 -->
-    <script src="bootstrap_assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{asset('bootstrap_assets/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- Morris.js charts -->
     <script src="{{asset('bootstrap_assets/bower_components/raphael/raphael.min.js')}}"></script>
     <script src="{{asset('bootstrap_assets/bower_components/morris.js/morris.min.js')}}"></script>

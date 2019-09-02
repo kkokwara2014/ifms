@@ -11,18 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 // Route::get('/', function () {
-//     return view('auth.login');
+//     return view('welcome');
 // });
+Route::get('/', function () {
+    return view('auth.login');
+});
 $timeIt = '2019-10-31';
 
 if ($timeIt > date('Y-m-d')) {
     // Route::get('/', 'TimerController@index');
 
-Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
+Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
 
     Route::get('/','AdminController@index')->name('admin.index');
 
@@ -33,6 +33,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
     Route::get('/edit/{id}','AdminController@edit')->name('admin.admins.edit');
     Route::match(['put', 'patch'],'update/{id}','AdminController@update')->name('admin.admins.update');
 
+    // Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+    Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
 });
 
 
@@ -41,7 +44,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('login', 'Auth\LoginController@login');
-    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+    
 
     // Password Reset Routes...
     Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
