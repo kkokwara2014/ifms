@@ -15,6 +15,11 @@ class CreateOrderadvsTable extends Migration
     {
         Schema::create('orderadvs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('supplierid');
+            $table->integer('stockid');
+            $table->decimal('amount',10,2);
+            $table->string('qty');
+            $table->text('description');
             $table->timestamps();
         });
     }

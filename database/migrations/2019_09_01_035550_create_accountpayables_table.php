@@ -15,6 +15,12 @@ class CreateAccountpayablesTable extends Migration
     {
         Schema::create('accountpayables', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('ledgerid');
+            $table->string('creditorname');
+            $table->string('phone');
+            $table->string('email')->nullable();
+            $table->decimal('amount',10,2);
+            $table->text('narration');
             $table->timestamps();
         });
     }

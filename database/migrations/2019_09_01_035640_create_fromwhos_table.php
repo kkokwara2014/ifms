@@ -15,6 +15,7 @@ class CreateFromwhosTable extends Migration
     {
         Schema::create('fromwhos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
             $table->timestamps();
         });
     }

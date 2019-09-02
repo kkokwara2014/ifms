@@ -15,6 +15,9 @@ class CreateGrantsTable extends Migration
     {
         Schema::create('grants', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->decimal('amount',10,2);
+            $table->text('comments');
+            $table->integer('fromwhoid');
             $table->timestamps();
         });
     }
