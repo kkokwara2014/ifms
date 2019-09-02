@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
 $timeIt = '2019-10-31';
 
 if ($timeIt > date('Y-m-d')) {
