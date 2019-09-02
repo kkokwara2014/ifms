@@ -58,6 +58,7 @@ return array(
     'App\\Revenue' => $baseDir . '/app/Revenue.php',
     'App\\Role' => $baseDir . '/app/Role.php',
     'App\\Salarypayment' => $baseDir . '/app/Salarypayment.php',
+    'App\\Servicetype' => $baseDir . '/app/Servicetype.php',
     'App\\Stock' => $baseDir . '/app/Stock.php',
     'App\\Supplier' => $baseDir . '/app/Supplier.php',
     'App\\Tour' => $baseDir . '/app/Tour.php',

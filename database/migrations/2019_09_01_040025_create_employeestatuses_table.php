@@ -15,6 +15,8 @@ class CreateEmployeestatusesTable extends Migration
     {
         Schema::create('employeestatuses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('employeeid');
+            $table->string('statustype');
             $table->timestamps();
         });
     }

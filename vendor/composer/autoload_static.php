@@ -437,6 +437,7 @@ class ComposerStaticInitd36932b77ccc39df67a03104fb1c6ec0
         'App\\Revenue' => __DIR__ . '/../..' . '/app/Revenue.php',
         'App\\Role' => __DIR__ . '/../..' . '/app/Role.php',
         'App\\Salarypayment' => __DIR__ . '/../..' . '/app/Salarypayment.php',
+        'App\\Servicetype' => __DIR__ . '/../..' . '/app/Servicetype.php',
         'App\\Stock' => __DIR__ . '/../..' . '/app/Stock.php',
         'App\\Supplier' => __DIR__ . '/../..' . '/app/Supplier.php',
         'App\\Tour' => __DIR__ . '/../..' . '/app/Tour.php',

@@ -16,13 +16,13 @@ class CreateRevenuesTable extends Migration
         Schema::create('revenues', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('revnumber');
-            $table->integer('ledgerid');
             $table->integer('mdaid');
             $table->decmial('amount',10,2);
             $table->text('narration');
             $table->string('revtype');
             $table->string('collectorename');
             $table->string('collectorphone');
+            $table->integer('ledgerid');
             $table->timestamps();
         });
     }

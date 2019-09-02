@@ -23,20 +23,20 @@ class CreateEmployeesTable extends Migration
             $table->string('email')->nullable();
             $table->string('designation')->nullable();
             $table->string('dob');
-            $table->text('address');
             $table->string('gender');
             $table->string('maritalstatus');
             $table->string('appointmentdate');
             $table->integer('bankid');
             $table->string('bankaccount');
-            $table->decimal('basicsalary',10,2);
-            $table->decimal('netpay',10,2);
-            $table->decimal('totalallow',10,2);
-            $table->decimal('deductions',10,2);
+            $table->decimal('basicsalary', 10, 2);
+            $table->decimal('netpay', 10, 2);
+            $table->decimal('totalallow', 10, 2);
+            $table->decimal('deductions', 10, 2);
             $table->integer('departmentid');
             $table->integer('empunionid');
             $table->integer('rankid');
             $table->integer('qualificationid');
+            $table->text('empimage');
             $table->timestamps();
         });
     }

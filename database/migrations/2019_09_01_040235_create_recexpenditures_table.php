@@ -15,6 +15,12 @@ class CreateRecexpendituresTable extends Migration
     {
         Schema::create('recexpenditures', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('departmentid');
+            $table->integer('ledgerid');
+            $table->integer('employeeid');
+            $table->integer('servicetypeid');
+            $table->decimal('amountapproved',10,2);
+            $table->string('monthyear');
             $table->timestamps();
         });
     }

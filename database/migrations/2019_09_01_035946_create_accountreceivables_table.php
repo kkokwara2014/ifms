@@ -15,6 +15,11 @@ class CreateAccountreceivablesTable extends Migration
     {
         Schema::create('accountreceivables', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('customername');
+            $table->string('phone');
+            $table->string('email')->nullable();
+            $table->decimal('amount',10,2);
+            $table->text('narration');
             $table->timestamps();
         });
     }

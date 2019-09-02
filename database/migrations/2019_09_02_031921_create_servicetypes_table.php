@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFundretsTable extends Migration
+class CreateServicetypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateFundretsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fundrets', function (Blueprint $table) {
+        Schema::create('servicetypes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('employeeid');
-            $table->integer('ledgerid');
-            $table->decimal('amount',10,2);
-            $table->text('comment');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateFundretsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fundrets');
+        Schema::dropIfExists('servicetypes');
     }
 }
