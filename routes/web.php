@@ -19,7 +19,6 @@ $timeIt = '2019-10-31';
 if ($timeIt > date('Y-m-d')) {
     Route::get('/', 'TimerController@index');
 
-    
 Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
 
     Route::get('/','AdminController@index')->name('admin.index');
