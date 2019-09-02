@@ -125,7 +125,7 @@
             <div class="login-box-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
-                <form action="{{ route('login') }}" method="post">
+                <form action="{{ url('login') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group has-feedback">
                         <input type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}"
