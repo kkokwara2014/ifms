@@ -18,7 +18,7 @@
               <p>Contacts</p>
             </div>
             <div class="icon">
-              <i class="ion ion-email"></i>
+              <i class="fa fa-envelope"></i>
             </div>
             {{-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> --}}
           </div>
@@ -33,7 +33,7 @@
               <p>Committee Members</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person"></i>
+              <i class="fa fa-user"></i>
             </div>
             {{-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> --}}
           </div>
@@ -48,7 +48,7 @@
               <p>Admins</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="fa fa-users"></i>
             </div>
             {{-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> --}}
           </div>
@@ -63,7 +63,7 @@
               <p>Abstracts</p>
             </div>
             <div class="icon">
-              <i class="ion ion-ios-paper"></i>
+              <i class="fa fa-newspaper-o"></i>
             </div>
             {{-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> --}}
           </div>
@@ -77,7 +77,7 @@
               <p>Full Papers</p>
             </div>
             <div class="icon">
-              <i class="ion ion-ios-paper"></i>
+              <i class="fa fa-newspaper-o"></i>
             </div>
             {{-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> --}}
           </div>
@@ -91,7 +91,7 @@
               <p>Registrations</p>
             </div>
             <div class="icon">
-              <i class="ion ion-ios-people"></i>
+              <i class="fa fa-user-plus"></i>
             </div>
             {{-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> --}}
           </div>

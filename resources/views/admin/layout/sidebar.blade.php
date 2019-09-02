@@ -21,7 +21,7 @@
         </a>
       </li>
 
-      <li class="treeview active">
+      <li class="treeview">
         <a href="#">
           <i class="fa fa-edit"></i> <span>Forms</span>
           <span class="pull-right-container">

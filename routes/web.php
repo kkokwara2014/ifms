@@ -11,13 +11,13 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 $timeIt = '2019-10-31';
 
 if ($timeIt > date('Y-m-d')) {
-    Route::get('/', 'TimerController@index');
+    // Route::get('/', 'TimerController@index');
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
 
@@ -33,10 +33,10 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'], function(){
 });
 
 
-    Route::get('/', 'Auth\LoginController@showLoginForm')->name('index');
+    // Route::get('/', 'Auth\LoginController@showLogin')->name('homepage');
 
     // Authentication Routes...
-    // Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('login', 'Auth\LoginController@login');
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
