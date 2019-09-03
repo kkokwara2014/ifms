@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Supplier extends Model
 {
-    //
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+    public function orderadvs(){
+        return $this->hasMany(Orderadv::class);
+    }
 }
