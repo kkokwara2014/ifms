@@ -59,7 +59,6 @@
           <div class="small-box bg-fuchsia">
             <div class="inner">
             <h3>30</h3>
-
               <p>Abstracts</p>
             </div>
             <div class="icon">

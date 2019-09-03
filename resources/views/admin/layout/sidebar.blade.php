@@ -16,12 +16,12 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       {{-- <li class="header">MAIN NAVIGATION</li> --}}
-      <li class="active">
+      <li class="active treeview">
         <a href="#">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
         </a>
       </li>
-
+     
       <li class="treeview">
         <a href="#">
           <i class="fa fa-edit"></i>
@@ -31,34 +31,58 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href=""><i class="fa fa-circle-o"></i> MDA</a></li>
-          <li><a href=""><i class="fa fa-circle-o"></i> Department</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+          <li><a href="#l"><i class="fa fa-circle-o"></i> Morris</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li>
         </ul>
       </li>
-
-
+      
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-edit"></i> <span>Forms</span>
+          <i class="fa fa-edit"></i>
+          <span>MDA</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> General Elements</a></li>
-
-          <li><a href="#"><i class="fa fa-circle-o"></i> Editors</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li>
         </ul>
       </li>
-
-
-      {{-- Admin Area --}}
-      <li>
-        <a href="{{ route('admin.admins.all') }}">
-          <i class="fa fa-user-plus"></i><span> Admins</span>
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-edit"></i>
+          <span>Advances</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
         </a>
+        <ul class="treeview-menu">
+          <li><a href="#"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+        </ul>
       </li>
-
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-edit"></i>
+          <span>Third Party</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="#"><i class="fa fa-circle-o"></i> Contractor</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Supplier</a></li>
+          
+        </ul>
+      </li>
+      
     </ul>
   </section>
   <!-- /.sidebar -->
