@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Mda;
+
 class MdaController extends Controller
 {
     /**
@@ -37,6 +39,9 @@ class MdaController extends Controller
         $this->validate($request,[
             'name'=>'required',
         ]);
+
+        Mda::create($request->all());
+        return back();
     }
 
     /**
