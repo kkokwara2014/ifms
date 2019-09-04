@@ -2,12 +2,12 @@
 
 
 @section('content')
-@include('admin.layout.statboard')
+{{-- @include('admin.layout.statboard') --}}
 <!-- Main row -->
 <div class="row">
   <!-- Left col -->
   <section class="col-lg-12 connectedSortable">
-
+    All MDAs
 
 
   </section>

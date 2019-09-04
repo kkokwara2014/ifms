@@ -26,12 +26,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
 
     Route::get('/','AdminController@index')->name('admin.index');
 
-    // Handling all about the Admins
-    Route::get('/all','AdminController@allAdmins')->name('admin.admins.all');
-    Route::get('/create/new','AdminController@create')->name('admin.admins.create');
-    Route::post('/create/new','AdminController@store')->name('admin.admins.store');
-    Route::get('/edit/{id}','AdminController@edit')->name('admin.admins.edit');
-    Route::match(['put', 'patch'],'update/{id}','AdminController@update')->name('admin.admins.update');
+    Route::resource('mda','MdaController');
 
     // Route::post('logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');

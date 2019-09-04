@@ -13,7 +13,7 @@ class MdaController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.mda.index');
     }
 
     /**

@@ -8,20 +8,53 @@
         <img src="{{asset('bootstrap_assets/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>{{ ucfirst(Auth::user()->name) }}</p>
-        {{-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> --}}
+        <p>{{Auth::user()->name}}</p>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
 
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      {{-- <li class="header">MAIN NAVIGATION</li> --}}
+
       <li class="active treeview">
         <a href="#">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          <span class="pull-right-container">
+            {{-- <i class="fa fa-angle-left pull-right"></i> --}}
+          </span>
         </a>
+
       </li>
-     
+
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-edit"></i>
+          <span>Accounts</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="#"><i class="fa fa-circle-o"></i> Payable</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Receivable</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-edit"></i>
+          <span>Finance</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="#"><i class="fa fa-circle-o"></i> Budget</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Fund Retirement</a></li>
+        </ul>
+      </li>
+
       <li class="treeview">
         <a href="#">
           <i class="fa fa-edit"></i>
@@ -31,47 +64,78 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> MDA</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Department</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Employee</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Appraisal</a></li>
         </ul>
       </li>
-      
+
       <li class="treeview">
         <a href="#">
           <i class="fa fa-edit"></i>
-          <span>MDA</span>
+          <span>Procurement</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-          <li><a href="index.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Assets</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Order</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Stock</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Inventory</a></li>
         </ul>
       </li>
+
       <li class="treeview">
         <a href="#">
           <i class="fa fa-edit"></i>
-          <span>Advances</span>
+          <span>Expenditure</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Employee</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li>
         </ul>
       </li>
+
       <li class="treeview">
         <a href="#">
           <i class="fa fa-edit"></i>
-          <span>Third Party</span>
+          <span>Revenue</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="#"><i class="fa fa-circle-o"></i> Employee</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-edit"></i> <span>Advances</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="#"><i class="fa fa-circle-o"></i> Employee Advance</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Order Advance</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Tour Advance</a></li>
+        </ul>
+      </li>
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-edit"></i> <span>Third Party</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -79,9 +143,9 @@
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-circle-o"></i> Contractor</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Supplier</a></li>
-          
         </ul>
       </li>
+
     </ul>
   </section>
   <!-- /.sidebar -->
