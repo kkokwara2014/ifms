@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contractor;
 use Illuminate\Http\Request;
 
 class ContractorController extends Controller
@@ -13,7 +14,8 @@ class ContractorController extends Controller
      */
     public function index()
     {
-        //
+        $contractors=Contractor::orderBy('created_at','desc')->get();
+        return view('admin.contractor.index',compact('contractors'));
     }
 
     /**
@@ -34,7 +36,17 @@ class ContractorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'contnumber' => 'required|min:3',
+            'fullname' => 'required|min:3',
+            'compname' => 'required|min:3',
+            'address' => 'required|min:3',
+            'phone' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        Contractor::create($request->all());
+        return back();
     }
 
     /**
@@ -56,7 +68,8 @@ class ContractorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contractors=Contractor::where('id',$id)->first();
+        return view('admin.contractor.edit', compact('contractors'));
     }
 
     /**
@@ -68,7 +81,25 @@ class ContractorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'contnumber' => 'required|min:3',
+            'fullname' => 'required|min:3',
+            'compname' => 'required|min:3',
+            'address' => 'required|min:3',
+            'phone' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $contractor=Contractor::find($id);
+        $contractor->contnumber=$request->contnumber;
+        $contractor->fullname=$request->fullname;
+        $contractor->compname=$request->compname;
+        $contractor->address=$request->address;
+        $contractor->phone=$request->phone;
+        $contractor->email=$request->email;
+        $contractor->save();
+
+        return redirect(route('contractor.index'));
     }
 
     /**
@@ -79,6 +110,7 @@ class ContractorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contractors=Contractor::where('id',$id)->delete();
+        return redirect()->back();
     }
 }

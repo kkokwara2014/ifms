@@ -26,7 +26,7 @@ class CreateEmployeesTable extends Migration
             $table->string('gender');
             $table->string('maritalstatus');
             $table->string('appointmentdate');
-            $table->integer('bankid');
+            $table->integer('bank_id');
             $table->string('bankaccount');
             $table->decimal('basicsalary', 10, 2);
             $table->decimal('netpay', 10, 2);

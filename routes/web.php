@@ -27,8 +27,10 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::get('/','AdminController@index')->name('admin.index');
 
     Route::resource('mda','MdaController');
+    Route::resource('contractor','ContractorController');
+    Route::resource('supplier','SupplierController');
+    Route::resource('department','DepartmentController');
 
-    // Route::post('logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 });

@@ -9,7 +9,7 @@
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-           <span class="fa fa-plus"></span> Add MDA
+            <span class="fa fa-plus"></span> Add Department
         </button>
         <br><br>
 
@@ -23,26 +23,31 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th>MDA</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($mdas as $mda)
+                                @foreach ($departments as $dept)
                                 <tr>
-                                    <td>{{$mda->name}}</td>
-                                <td><a href="{{ route('mda.edit',$mda->id) }}"><span class="fa fa-edit fa-2x text-primary"></span></a></td>
+
+                                    <td>{{$dept->name}}</td>
+                                    <td>{{$dept->mdas->name}}</td>
+
+                                    <td><a href="{{ route('department.edit',$dept->id) }}"><span
+                                                class="fa fa-edit fa-2x text-primary"></span></a></td>
                                     <td>
-                                        <form id="delete-form-{{$mda->id}}" style="display: none"
-                                            action="{{ route('mda.destroy',$mda->id) }}" method="post">
+                                        <form id="delete-form-{{$dept->id}}" style="display: none"
+                                            action="{{ route('department.destroy',$dept->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{method_field('DELETE')}}
                                         </form>
                                         <a href="" onclick="
                                                             if (confirm('Are you sure you want to delete this?')) {
                                                                 event.preventDefault();
-                                                            document.getElementById('delete-form-{{$mda->id}}').submit();
+                                                            document.getElementById('delete-form-{{$dept->id}}').submit();
                                                             } else {
                                                                 event.preventDefault();
                                                             }
@@ -56,6 +61,7 @@
                             <tfoot>
                                 <tr>
                                     <th>Name</th>
+                                    <th>MDA</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -73,16 +79,31 @@
         <div class="modal fade" id="modal-default">
             <div class="modal-dialog">
 
-                <form action="{{ route('mda.store') }}" method="post">
+                <form action="{{ route('department.store') }}" method="post">
                     {{ csrf_field() }}
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Add MDA</h4>
+                            <h4 class="modal-title">Add Department</h4>
                         </div>
                         <div class="modal-body">
-                            <input type="text" class="form-control" name="name" placeholder="MDA Name">
+                            <div>
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="Department Name">
+                            </div>
+
+                            <div>
+                                <label for="">MDA</label>
+                                <select name="mdaid" class="form-control">
+                                    <option selected="disabled">Select MDA</option>
+                                    @foreach ($mdas as $mda)
+                                    <option value="{{$mda->id}}">{{$mda->name}}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -97,7 +118,7 @@
         </div>
         <!-- /.modal -->
 
-       
+
     </section>
     <!-- /.Left col -->
     <!-- right col (We are only adding the ID to make the widgets sortable)-->

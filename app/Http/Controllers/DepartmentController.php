@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
+use App\Mda;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -13,7 +15,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::orderBy('name', 'asc')->get();
+        $mdas = Mda::orderBy('name', 'asc')->get();
+        return view('admin.department.index', compact('departments','mdas'));
     }
 
     /**
@@ -34,7 +38,13 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'mdaid' => 'required',
+        ]);
+
+        Department::create($request->all());
+        return back();
     }
 
     /**
@@ -56,7 +66,8 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $departments=Department::where('id',$id)->first();
+        return view('admin.department.edit', compact('departments'));
     }
 
     /**
@@ -68,7 +79,18 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'mdaid' => 'required',
+        ]);
+
+        $department = Department::find($id);
+        $department->name = $request->name;
+        $department->mdaid = $request->mdaid;
+
+        $department->save();
+
+        return redirect(route('department.index'));
     }
 
     /**
@@ -79,6 +101,7 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $departments=Department::where('id',$id)->delete();
+        return redirect()->back();
     }
 }

@@ -12,7 +12,7 @@ class Mda extends Model
     public function departments(){
         return $this->hasMany(Department::class);
     }
-    public function revebues(){
+    public function revenues(){
         return $this->hasMany(Revenue::class);
     }
     public function salarypayments(){

@@ -18,8 +18,8 @@ class CreateAssetsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('acquisitiondate');
-            $table->integer('departmentid');
-            $table->integer('inventoryid');
+            $table->integer('department_id');
+            $table->integer('inventory_id');
             $table->timestamps();
         });
     }
