@@ -17,7 +17,7 @@ class CreateGrantsTable extends Migration
             $table->bigIncrements('id');
             $table->decimal('amount',10,2);
             $table->text('comments');
-            $table->integer('fromwhoid');
+            $table->integer('fromwho_id');
             $table->timestamps();
         });
     }

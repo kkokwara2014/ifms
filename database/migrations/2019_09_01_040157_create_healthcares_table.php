@@ -15,8 +15,8 @@ class CreateHealthcaresTable extends Migration
     {
         Schema::create('healthcares', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('institutypeid');
-            $table->integer('ledgerid');
+            $table->integer('institutype_id');
+            $table->integer('ledger_id');
             $table->string('hccode');
             $table->text('hcname');
             $table->decimal('amount',10,2);

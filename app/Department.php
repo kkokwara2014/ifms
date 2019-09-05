@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
 
-    protected $fillable=['name','mdaid'];
+    protected $fillable=['name','mda_id'];
 
     public function employees(){
         return $this->hasMany(Employee::class);
@@ -15,7 +15,7 @@ class Department extends Model
     public function assets(){
         return $this->hasMany(Asset::class);
     }
-    public function mdas(){
+    public function mda(){
         return $this->belongsTo(Mda::class);
     }
     public function recexpenditures(){

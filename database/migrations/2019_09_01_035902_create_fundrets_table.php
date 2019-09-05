@@ -15,8 +15,8 @@ class CreateFundretsTable extends Migration
     {
         Schema::create('fundrets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('employeeid');
-            $table->integer('ledgerid');
+            $table->integer('employee_id');
+            $table->integer('ledger_id');
             $table->decimal('amount',10,2);
             $table->text('comment');
             $table->timestamps();

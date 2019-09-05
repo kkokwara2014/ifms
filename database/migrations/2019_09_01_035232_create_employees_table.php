@@ -32,10 +32,10 @@ class CreateEmployeesTable extends Migration
             $table->decimal('netpay', 10, 2);
             $table->decimal('totalallow', 10, 2);
             $table->decimal('deductions', 10, 2);
-            $table->integer('departmentid');
-            $table->integer('empunionid');
-            $table->integer('rankid');
-            $table->integer('qualificationid');
+            $table->integer('department_id');
+            $table->integer('empunion_id');
+            $table->integer('rank_id');
+            $table->integer('qualification_id');
             $table->text('empimage');
             $table->timestamps();
         });

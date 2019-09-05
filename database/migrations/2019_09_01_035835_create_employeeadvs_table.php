@@ -15,8 +15,8 @@ class CreateEmployeeadvsTable extends Migration
     {
         Schema::create('employeeadvs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('employeeid');
-            $table->integer('ledgerid');
+            $table->integer('employee_id');
+            $table->integer('ledger_id');
             $table->decimal('amount',10,2);
             $table->text('reason');
             $table->timestamps();

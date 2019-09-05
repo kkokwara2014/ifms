@@ -15,7 +15,7 @@ class CreateDeductionsTable extends Migration
     {
         Schema::create('deductions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('employeeid');
+            $table->integer('employee_id');
             $table->decimal('housingfund',10,2);
             $table->decimal('devlevy',10,2);
             $table->decimal('salaryadv',10,2);

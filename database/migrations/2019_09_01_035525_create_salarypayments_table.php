@@ -15,7 +15,7 @@ class CreateSalarypaymentsTable extends Migration
     {
         Schema::create('salarypayments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('mdaid');
+            $table->integer('mda_id');
             $table->decimal('amount',15,2);
             $table->string('salarymonthyear');
             $table->timestamps();

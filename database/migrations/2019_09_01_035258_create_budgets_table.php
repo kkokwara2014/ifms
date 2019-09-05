@@ -17,9 +17,9 @@ class CreateBudgetsTable extends Migration
             $table->bigIncrements('id');
             $table->decimal('amount',10,2);
             $table->text('reason');
-            $table->integer('ledgerid');
-            $table->integer('mdaid');
-            $table->integer('budgetcategoryid');
+            $table->integer('ledger_id');
+            $table->integer('mda_id');
+            $table->integer('budgetcategory_id');
             $table->timestamps();
         });
     }

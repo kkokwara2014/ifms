@@ -15,8 +15,8 @@ class CreateContractoradvsTable extends Migration
     {
         Schema::create('contractoradvs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('ledgerid');
-            $table->integer('contractorid');
+            $table->integer('ledger_id');
+            $table->integer('contractor_id');
             $table->decimal('amount',10,2);
             $table->text('purpose');
             $table->text('awardedby');

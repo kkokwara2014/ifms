@@ -34,7 +34,7 @@
                                 <tr>
 
                                     <td>{{$dept->name}}</td>
-                                    <td>{{$dept->mdas->name}}</td>
+                                    <td>{{$dept->mda->name}}</td>
 
                                     <td><a href="{{ route('department.edit',$dept->id) }}"><span
                                                 class="fa fa-edit fa-2x text-primary"></span></a></td>
