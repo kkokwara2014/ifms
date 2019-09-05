@@ -83,7 +83,7 @@
           <li><a href="#"><i class="fa fa-circle-o"></i> Assets</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Order</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Stock</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Inventory</a></li>
+        <li><a href="{{ route('inventory.index') }}"><i class="fa fa-circle-o"></i> Inventory</a></li>
         </ul>
       </li>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Inventory;
 
 class InventoryController extends Controller
 {
@@ -14,7 +15,7 @@ class InventoryController extends Controller
     public function index()
     {
         $inventories = Inventory::orderBy('name', 'asc')->get();
-        return view('admin.mda.index', compact('mdas'));
+        return view('admin.inventory.index', compact('inventories'));
     }
 
     /**
@@ -39,7 +40,7 @@ class InventoryController extends Controller
             'name' => 'required',
         ]);
 
-        Mda::create($request->all());
+        Inventory::create($request->all());
         return back();
     }
 
@@ -62,8 +63,8 @@ class InventoryController extends Controller
      */
     public function edit($id)
     {
-        $mdas=Mda::where('id',$id)->first();
-        return view('admin.mda.edit', compact('mdas'));
+        $inventories=Inventory::where('id',$id)->first();
+        return view('admin.inventory.edit', compact('inventories'));
     }
 
     /**
@@ -79,12 +80,12 @@ class InventoryController extends Controller
             'name' => 'required',
         ]);
 
-        $mda = Mda::find($id);
-        $mda->name = $request->name;
+        $inventory = Inventory::find($id);
+        $inventory->name = $request->name;
 
-        $mda->save();
+        $inventory->save();
 
-        return redirect(route('mda.index'));
+        return redirect(route('inventory.index'));
     }
 
     /**
@@ -95,7 +96,7 @@ class InventoryController extends Controller
      */
     public function destroy($id)
     {
-        $mdas=Mda::where('id',$id)->delete();
+        $inventories=Inventory::where('id',$id)->delete();
         return redirect()->back();
     }
 }
