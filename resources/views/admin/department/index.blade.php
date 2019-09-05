@@ -95,7 +95,7 @@
 
                             <div>
                                 <label for="">MDA</label>
-                                <select name="mdaid" class="form-control">
+                                <select name="mda_id" class="form-control">
                                     <option selected="disabled">Select MDA</option>
                                     @foreach ($mdas as $mda)
                                     <option value="{{$mda->id}}">{{$mda->name}}</option>

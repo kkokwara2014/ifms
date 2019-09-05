@@ -80,7 +80,7 @@
                       alt="User Image">
 
                     <p>
-                      {{Auth::user()->name}} - Super Admin
+                      {{Auth::user()->name}} - {{Auth::user()->role->name}}
                       <small>Member since {{Auth::user()->created_at->diffForHumans()}}</small>
                     </p>
                   </li>

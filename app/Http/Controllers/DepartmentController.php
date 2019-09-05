@@ -40,7 +40,7 @@ class DepartmentController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'mdaid' => 'required',
+            'mda_id' => 'required',
         ]);
 
         Department::create($request->all());
@@ -67,7 +67,8 @@ class DepartmentController extends Controller
     public function edit($id)
     {
         $departments=Department::where('id',$id)->first();
-        return view('admin.department.edit', compact('departments'));
+        $mdas = Mda::orderBy('name', 'asc')->get();
+        return view('admin.department.edit', compact('departments','mdas'));
     }
 
     /**
@@ -81,12 +82,12 @@ class DepartmentController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'mdaid' => 'required',
+            'mda_id' => 'required',
         ]);
 
         $department = Department::find($id);
         $department->name = $request->name;
-        $department->mdaid = $request->mdaid;
+        $department->mda_id = $request->mda_id;
 
         $department->save();
 
