@@ -13,7 +13,8 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        //
+        $inventories = Inventory::orderBy('name', 'asc')->get();
+        return view('admin.mda.index', compact('mdas'));
     }
 
     /**
@@ -34,7 +35,12 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        Mda::create($request->all());
+        return back();
     }
 
     /**
@@ -56,7 +62,8 @@ class InventoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mdas=Mda::where('id',$id)->first();
+        return view('admin.mda.edit', compact('mdas'));
     }
 
     /**
@@ -68,7 +75,16 @@ class InventoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $mda = Mda::find($id);
+        $mda->name = $request->name;
+
+        $mda->save();
+
+        return redirect(route('mda.index'));
     }
 
     /**
@@ -79,6 +95,7 @@ class InventoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mdas=Mda::where('id',$id)->delete();
+        return redirect()->back();
     }
 }

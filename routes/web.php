@@ -30,6 +30,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('contractor','ContractorController');
     Route::resource('supplier','SupplierController');
     Route::resource('department','DepartmentController');
+    Route::resource('inventory','InventoryController');
 
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
