@@ -97,9 +97,9 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-circle-o"></i> Employee</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
+          {{-- <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
         </ul>
       </li>
 
@@ -112,10 +112,10 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Employee</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> MDA</a></li>
+          {{-- <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}
         </ul>
       </li>
 
