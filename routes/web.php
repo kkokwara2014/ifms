@@ -17,7 +17,7 @@
 Route::get('/', function () {
     return view('auth.login');
 });
-$timeIt = '2019-10-31';
+$timeIt = '2019-12-31';
 
 if ($timeIt > date('Y-m-d')) {
     // Route::get('/', 'TimerController@index');
@@ -26,11 +26,18 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
 
     Route::get('/','AdminController@index')->name('admin.index');
 
+    Route::resource('assets','AssetsController');
     Route::resource('mda','MdaController');
     Route::resource('contractor','ContractorController');
     Route::resource('supplier','SupplierController');
     Route::resource('department','DepartmentController');
     Route::resource('inventory','InventoryController');
+    Route::resource('employee','EmployeeController');
+    Route::resource('stocks','StocksController');
+    Route::resource('orders','OrderController');
+    Route::resource('purchases','ProcurementController');
+    Route::resource('budgets','BudgetController');
+    Route::resource('ledger','LedgerController');
 
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 

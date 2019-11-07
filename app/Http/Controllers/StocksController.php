@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Inventory;
+use App\Stock;
 use Illuminate\Http\Request;
 
 class StocksController extends Controller
@@ -13,7 +15,10 @@ class StocksController extends Controller
      */
     public function index()
     {
-        //
+        
+        $inventories = Inventory::orderBy('name', 'asc')->get();
+        $stocks=Stock::orderBy('created_at','desc')->get();
+        return view('admin.stock.index', compact('stocks','inventories'));
     }
 
     /**
@@ -34,7 +39,16 @@ class StocksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'inventory_id' => 'required',
+            'item' => 'required',
+            'qtyavailable' => 'required',
+            'unitprice' => 'required',
+            'datebought' => 'required',
+        ]);
+
+        Stock::create($request->all());
+        return back();
     }
 
     /**
@@ -56,7 +70,9 @@ class StocksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $inventories = Inventory::orderBy('name', 'asc')->get();
+        $stocks=Stock::where('id',$id)->first();
+        return view('admin.stock.edit', compact('stocks','inventories'));
     }
 
     /**
@@ -68,7 +84,25 @@ class StocksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'inventory_id' => 'required',
+            'item' => 'required',
+            'qtyavailable' => 'required',
+            'unitprice' => 'required',
+            'datebought' => 'required',
+        ]);        
+
+        $stock = Stock::find($id);
+        $stock->inventory_id = $request->inventory_id;
+        $stock->item = $request->item;
+        $stock->qtyavailable = $request->qtyavailable;
+        $stock->unitprice = $request->unitprice;
+        $stock->description = $request->description;
+        $stock->datebought = $request->datebought;
+
+        $stock->save();
+
+        return redirect(route('stock.index'));
     }
 
     /**
@@ -79,6 +113,7 @@ class StocksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $stocks=Stock::where('id',$id)->delete();
+        return redirect()->back();
     }
 }

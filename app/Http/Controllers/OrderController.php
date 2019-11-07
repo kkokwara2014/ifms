@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\Stock;
+use App\Supplier;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -13,7 +16,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $stocks = Stock::orderBy('item', 'asc')->get();
+        $suppliers = Supplier::orderBy('fullname', 'asc')->get();
+        $orders = Order::orderBy('created_at', 'desc')->get();
+        return view('admin.order.index', compact('orders', 'stocks', 'suppliers'));
     }
 
     /**
@@ -34,7 +40,15 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'stock_id' => 'required',
+            'supplier_id' => 'required',
+            'qty' => 'required',
+            'comment' => 'required',
+        ]);
+
+        Order::create($request->all());
+        return back();
     }
 
     /**
@@ -45,7 +59,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,7 +70,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $stocks = Stock::orderBy('item', 'asc')->get();
+        $suppliers = Supplier::orderBy('fullname', 'asc')->get();
+        $orders = Order::where('id', $id)->first();
+        return view('admin.order.edit', compact('orders', 'stocks', 'suppliers'));
     }
 
     /**
@@ -68,7 +85,22 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'stock_id' => 'required',
+            'supplier_id' => 'required',
+            'qty' => 'required',
+            'comment' => 'required',
+        ]);
+
+        $order = Order::find($id);
+        $order->stock_id = $request->stock_id;
+        $order->supplier_id = $request->supplier_id;
+        $order->qty = $request->qty;
+        $order->comment = $request->comment;
+
+        $order->save();
+
+        return redirect(route('orders.index'));
     }
 
     /**
@@ -79,6 +111,7 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $orders=Order::where('id',$id)->delete();
+        return redirect()->back();
     }
 }

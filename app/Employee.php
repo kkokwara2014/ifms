@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
+
+    protected $fillable=['empnumber','fullname','compname','address','phone','email','designation','dob','gender','maritalstatus','appointmentdate','bank_id'];
+
     public function qualification(){
         return $this->belongsTo(Qualification::class);
     }

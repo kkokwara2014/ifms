@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ledger;
 use Illuminate\Http\Request;
 
 class LedgerController extends Controller
@@ -13,7 +14,9 @@ class LedgerController extends Controller
      */
     public function index()
     {
-        //
+        $ledgers = Ledger::orderBy('created_at', 'desc')->get();
+        
+        return view('admin.ledger.index', compact('ledgers'));
     }
 
     /**
@@ -34,7 +37,12 @@ class LedgerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        Ledger::create($request->all());
+        return back();
     }
 
     /**
@@ -56,7 +64,9 @@ class LedgerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ledgers = Ledger::where('id', $id)->first();
+        
+        return view('admin.ledger.edit', compact('ledgers'));
     }
 
     /**
@@ -68,7 +78,16 @@ class LedgerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $ledger = Ledger::find($id);
+        $ledger->name = $request->name;
+
+        $ledger->save();
+
+        return redirect(route('ledger.index'));
     }
 
     /**
@@ -79,6 +98,7 @@ class LedgerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ledgers=Ledger::where('id',$id)->delete();
+        return redirect()->back();
     }
 }

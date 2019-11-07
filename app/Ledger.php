@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ledger extends Model
 {
+    protected $fillable=['name'];
+    
     public function fundrets()
     {
         return $this->hasMany(Fundret::class);

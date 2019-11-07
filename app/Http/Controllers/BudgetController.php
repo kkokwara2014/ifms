@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Budget;
+use App\Budgetcategory;
+use App\Department;
+use App\Ledger;
 use Illuminate\Http\Request;
 
 class BudgetController extends Controller
@@ -13,7 +17,11 @@ class BudgetController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::orderBy('name', 'asc')->get();
+        $budgetCategories = Budgetcategory::orderBy('created_at', 'desc')->get();
+        $budgets = Budget::orderBy('created_at', 'desc')->get();
+        $ledgers = Ledger::orderBy('created_at', 'desc')->get();
+        return view('admin.budget.index', compact('budgets', 'departments', 'budgetCategories', 'ledgers'));
     }
 
     /**
@@ -34,7 +42,16 @@ class BudgetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'department_id' => 'required',
+            'budgetcategory_id' => 'required',
+            'amount' => 'required',
+            'reason' => 'required',
+            'ledger_id' => 'required',
+        ]);
+
+        Budget::create($request->all());
+        return back();
     }
 
     /**
@@ -56,7 +73,11 @@ class BudgetController extends Controller
      */
     public function edit($id)
     {
-        //
+        $departments = Department::orderBy('name', 'asc')->get();
+        $budgetCategories = Budgetcategory::orderBy('created_at', 'desc')->get();
+        $budgets = Budget::where('id', $id)->first();
+        $ledgers = Ledger::orderBy('created_at', 'desc')->get();
+        return view('admin.budget.edit', compact('budgets', 'departments', 'budgetCategories', 'ledgers'));
     }
 
     /**
@@ -68,7 +89,24 @@ class BudgetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'department_id' => 'required',
+            'budgetcategory_id' => 'required',
+            'amount' => 'required',
+            'reason' => 'required',
+            'ledger_id' => 'required',
+        ]);
+
+        $budget = budget::find($id);
+        $budget->department_id = $request->department_id;
+        $budget->budgetcategory_id = $request->budgetcategory_id;
+        $budget->amount = $request->amount;
+        $budget->reason = $request->reason;
+        $budget->ledger_id = $request->ledger_id;
+
+        $budget->save();
+
+        return redirect(route('budgets.index'));
     }
 
     /**
@@ -79,6 +117,7 @@ class BudgetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $budgets=Budget::where('id',$id)->delete();
+        return redirect()->back();
     }
 }

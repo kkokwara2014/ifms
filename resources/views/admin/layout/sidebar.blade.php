@@ -38,6 +38,7 @@
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-circle-o"></i> Payable</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Receivable</a></li>
+          <li><a href="{{ route('ledger.index') }}"><i class="fa fa-circle-o"></i> Ledger</a></li>
         </ul>
       </li>
 
@@ -50,7 +51,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Budget</a></li>
+          <li><a href="{{ route('budgets.index') }}"><i class="fa fa-circle-o"></i> Budget</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Fund Retirement</a></li>
         </ul>
       </li>
@@ -64,8 +65,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-        <li><a href="{{ route('mda.index') }}"><i class="fa fa-circle-o"></i> MDA</a></li>
-        <li><a href="{{ route('department.index') }}"><i class="fa fa-circle-o"></i> Department</a></li>
+          <li><a href="{{ route('mda.index') }}"><i class="fa fa-circle-o"></i> MDA</a></li>
+          <li><a href="{{ route('department.index') }}"><i class="fa fa-circle-o"></i> Department</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Employee</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Appraisal</a></li>
         </ul>
@@ -80,10 +81,11 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Assets</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Order</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Stock</a></li>
-        <li><a href="{{ route('inventory.index') }}"><i class="fa fa-circle-o"></i> Inventory</a></li>
+          <li><a href="{{ route('assets.index') }}"><i class="fa fa-circle-o"></i> Assets</a></li>
+          <li><a href="{{ route('orders.index') }}"><i class="fa fa-circle-o"></i> Order</a></li>
+          <li><a href="{{ route('stocks.index') }}"><i class="fa fa-circle-o"></i> Stock</a></li>
+          <li><a href="{{ route('inventory.index') }}"><i class="fa fa-circle-o"></i> Inventory</a></li>
+          <li><a href="{{ route('purchases.index') }}"><i class="fa fa-circle-o"></i> Purchases</a></li>
         </ul>
       </li>
 
@@ -141,7 +143,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-        <li><a href="{{ route('contractor.index') }}"><i class="fa fa-circle-o"></i> Contractor</a></li>
+          <li><a href="{{ route('contractor.index') }}"><i class="fa fa-circle-o"></i> Contractor</a></li>
           <li><a href="{{ route('supplier.index') }}"><i class="fa fa-circle-o"></i> Supplier</a></li>
         </ul>
       </li>
