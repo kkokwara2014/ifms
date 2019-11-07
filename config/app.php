@@ -210,4 +210,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Image' => In
+        'Image' => Intervention\Image\Facades\Image::class,
+
+    ],
+
+];
