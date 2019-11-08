@@ -81,7 +81,7 @@ class ExpenditureController extends Controller
         $procurements = Procurement::orderBy('created_at', 'asc')->get();
         $salarypayments = Salarypayment::orderBy('created_at', 'asc')->get();
         $expenditures=Expenditure::where('id',$id)->first();
-        return view('admin.expenditure.index', compact('expenditures','ledgers','budgets','procurements','salarypayments'));
+        return view('admin.expenditure.edit', compact('expenditures','ledgers','budgets','procurements','salarypayments'));
     }
 
     /**

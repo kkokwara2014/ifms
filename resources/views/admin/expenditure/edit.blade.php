@@ -8,8 +8,8 @@
 <div class="row">
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
-        <a href="{{ route('salarypayments.index') }}" class="btn btn-success">
-            <span class="fa fa-eye"></span> All Salary Payments
+        <a href="{{ route('expenditures.index') }}" class="btn btn-success">
+            <span class="fa fa-eye"></span> All Expenditures
         </a>
         <br><br>
 
@@ -19,36 +19,76 @@
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{ route('salarypayments.update',$salarypayments->id) }}" method="post">
+                        <form action="{{ route('expenditures.update',$expenditures->id) }}" method="post">
                             {{ csrf_field() }}
                             {{method_field('PUT')}}
 
                             <div>
-                                <label for="">MDA</label>
-                                <select name="mda_id" class="form-control">
-                                    <option selected="disabled">Select MDA</option>
-                                    @foreach ($mdas as $mda)
-                                    <option value="{{$mda->id}}"
-                                        {{$mda->id==$salarypayments->mda_id ? 'selected':''}}>
-                                        {{$mda->name}}</option>
+                                <label for="">Ledger</label>
+                                <select name="ledger_id" class="form-control">
+                                    <option selected="disabled">Select Ledger</option>
+                                    @foreach ($ledgers as $ledger)
+                                    <option value="{{$ledger->id}}"
+                                        {{$ledger->id==$expenditures->ledger_id ? 'selected':''}}>
+                                        {{$ledger->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div>
-                                <label for="">Amount</label>
-                                <input type="text" class="form-control" name="amount" value="{{$salarypayments->amount}}">
+                                <label for="">Budget</label>
+                                <select name="budget_id" class="form-control">
+                                    <option selected="disabled">Select Budget</option>
+                                    @foreach ($budgets as $budget)
+                                    <option value="{{$budget->id}}"
+                                        {{$budget->id==$expenditures->budget_id ? 'selected':''}}>
+                                        {{$budget->budgetcategory->name.' - '}}
+                                        &#8358;{{$budget->amount}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            
+                            <div>
+                                <label for="">Procurement</label>
+                                <select name="procurement_id" class="form-control">
+                                    <option selected="disabled">Select Procurement</option>
+                                    @foreach ($procurements as $procurement)
+                                    <option value="{{$procurement->id}}"
+                                        {{$procurement->id==$expenditures->procurement_id ? 'selected':''}}>
+                                        {{$procurement->department->name.' - '}}&#8358;{{$procurement->amount}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <label for="">Salary Payment</label>
+                                <select name="salarypayment_id" class="form-control">
+                                    <option selected="disabled">Select Salary Payment</option>
+                                    @foreach ($salarypayments as $salarypayment)
+                                    <option value="{{$salarypayment->id}}"
+                                        {{$salarypayment->id==$expenditures->salarypayment_id ? 'selected':''}}>
+                                        {{$salarypayment->mda->name.' - '}}&#8358;{{$salarypayment->amount}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div>
                                 <label for="">Paid On</label>
-                                <input type="text" class="form-control" id="datepicker" name="salarymonthyear"
-                                    placeholder="Paid On" value="{{$salarypayments->salarymonthyear}}">
+                                <input type="text" class="form-control" id="datepicker" name="datecaptured"
+                                    placeholder="Paid On" value="{{$expenditures->datecaptured}}">
+                            </div>
+
+                            <div>
+                                <label for="">Expenditure Type</label>
+                                <select name="expendtype" class="form-control">
+                                    <option selected="disabled">Select Expenditure Type</option>
+                                    <option>Capital Expenditure</option>
+                                    <option>Deferred Revenue Expenditure</option>
+                                    <option>Revenue Expenditure</option>
+                                </select>
                             </div>
 
 
                             <br>
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{ route('salarypayments.index') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('expenditures.index') }}" class="btn btn-default">Cancel</a>
 
                     </div>
                     </form>
