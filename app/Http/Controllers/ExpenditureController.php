@@ -44,7 +44,17 @@ class ExpenditureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'ledger_id' => 'required',
+            'budget_id' => 'required',
+            'procurement_id' => 'required',
+            'salarypayment_id' => 'required',
+            'datecaptured' => 'required',
+            'expendtype' => 'required',
+        ]);
+
+        Expenditure::create($request->all());
+        return back();
     }
 
     /**
@@ -66,7 +76,12 @@ class ExpenditureController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ledgers = Ledger::orderBy('created_at', 'asc')->get();
+        $budgets = Budget::orderBy('created_at', 'asc')->get();
+        $procurements = Procurement::orderBy('created_at', 'asc')->get();
+        $salarypayments = Salarypayment::orderBy('created_at', 'asc')->get();
+        $expenditures=Expenditure::where('id',$id)->first();
+        return view('admin.expenditure.index', compact('expenditures','ledgers','budgets','procurements','salarypayments'));
     }
 
     /**

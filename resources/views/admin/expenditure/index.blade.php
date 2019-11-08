@@ -50,8 +50,7 @@
                                                 class="fa fa-edit fa-2x text-primary"></span></a></td>
                                     <td>
                                         <form id="delete-form-{{$expenditure->id}}" style="display: none"
-                                            action="{{ route('expenditures.destroy',$expenditure->id) }}"
-                                            method="post">
+                                            action="{{ route('expenditures.destroy',$expenditure->id) }}" method="post">
                                             {{ csrf_field() }}
                                             {{method_field('DELETE')}}
                                         </form>
@@ -118,7 +117,8 @@
                                 <select name="budget_id" class="form-control">
                                     <option selected="disabled">Select Budget</option>
                                     @foreach ($budgets as $budget)
-                                    <option value="{{$budget->id}}">{{$budget->budgetcategory->name.' - '. $budget->amount}}</option>
+                                    <option value="{{$budget->id}}">{{$budget->budgetcategory->name.' - '}}
+                                        &#8358;{{$budget->amount}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -127,7 +127,8 @@
                                 <select name="procurement_id" class="form-control">
                                     <option selected="disabled">Select Procurement</option>
                                     @foreach ($procurements as $procurement)
-                                    <option value="{{$procurement->id}}">{{$procurement->amount}}</option>
+                                    <option value="{{$procurement->id}}">
+                                        {{$procurement->department->name.' - '}}&#8358;{{$procurement->amount}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -136,27 +137,29 @@
                                 <select name="salarypayment_id" class="form-control">
                                     <option selected="disabled">Select Salary Payment</option>
                                     @foreach ($salarypayments as $salarypayment)
-                                    <option value="{{$salarypayment->id}}">{{$salarypayment->amount}}</option>
+                                    <option value="{{$salarypayment->id}}">
+                                        {{$salarypayment->mda->name.' - '}}&#8358;{{$salarypayment->amount}}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div>
-                                <label for="">Expenditure Type <strong style="color:red">*</strong></label>
-                                <select name="expendtype" class="form-control">
-                                    <option selected="disabled">Select Expenditure Type</option>
-                                   
-                                    <option >Capital Expenditure</option>
-                                    <option >Deferred Revenue Expenditure</option>
-                                    <option >Revenue Expenditure</option>
-                                    
-                                </select>
-                            </div>
-                            
                             <div>
                                 <label for="">Captured On <strong style="color:red">*</strong></label>
                                 <input type="text" class="form-control" id="datepicker" name="datecaptured"
                                     placeholder="Captured On">
                             </div>
+                            <div>
+                                <label for="">Expenditure Type <strong style="color:red">*</strong></label>
+                                <select name="expendtype" class="form-control">
+                                    <option selected="disabled">Select Expenditure Type</option>
+
+                                    <option>Capital Expenditure</option>
+                                    <option>Deferred Revenue Expenditure</option>
+                                    <option>Revenue Expenditure</option>
+
+                                </select>
+                            </div>
+
+
 
                         </div>
                         <div class="modal-footer">
