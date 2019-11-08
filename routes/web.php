@@ -38,6 +38,8 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('purchases','ProcurementController');
     Route::resource('budgets','BudgetController');
     Route::resource('ledger','LedgerController');
+    Route::resource('salarypayments','SalarypaymentController');
+    Route::resource('expenditures','ExpenditureController');
 
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 

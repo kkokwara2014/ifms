@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="text-center col-xs-12 col-md-12 col-lg-12">Welcome to Integrated Financial Management System</h1>
+    <h1 class="text-center col-xs-12 col-md-12 col-lg-12">Integrated Financial Management System (IFMS)</h1>
     <br>
     
     <div class="row justify-content-center">

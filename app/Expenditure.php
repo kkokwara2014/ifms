@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Expenditure extends Model
 {
+    protected $fillable=['ledger_id','budget_id','procurement_id','salarypayment_id','datecaptured','expendtype'];
+
     public function ledger(){
         return $this->belongsTo(Ledger::class);
     }

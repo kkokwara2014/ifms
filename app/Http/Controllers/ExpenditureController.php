@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Budget;
+use App\Expenditure;
+use App\Ledger;
+use App\Procurement;
+use App\Salarypayment;
 use Illuminate\Http\Request;
 
 class ExpenditureController extends Controller
@@ -13,7 +18,12 @@ class ExpenditureController extends Controller
      */
     public function index()
     {
-        //
+        $ledgers = Ledger::orderBy('created_at', 'asc')->get();
+        $budgets = Budget::orderBy('created_at', 'asc')->get();
+        $procurements = Procurement::orderBy('created_at', 'asc')->get();
+        $salarypayments = Salarypayment::orderBy('created_at', 'asc')->get();
+        $expenditures=Expenditure::orderBy('created_at','desc')->get();
+        return view('admin.expenditure.index', compact('expenditures','ledgers','budgets','procurements','salarypayments'));
     }
 
     /**

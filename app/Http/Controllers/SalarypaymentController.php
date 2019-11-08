@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mda;
+use App\Salarypayment;
 use Illuminate\Http\Request;
 
 class SalarypaymentController extends Controller
@@ -13,7 +15,9 @@ class SalarypaymentController extends Controller
      */
     public function index()
     {
-        //
+        $mdas = Mda::orderBy('name', 'asc')->get();
+        $salarypayments=Salarypayment::orderBy('created_at','desc')->get();
+        return view('admin.salarypayment.index', compact('salarypayments','mdas'));
     }
 
     /**
@@ -34,7 +38,14 @@ class SalarypaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'mda_id' => 'required',
+            'amount' => 'required',
+            'salarymonthyear' => 'required',
+        ]);
+
+        Salarypayment::create($request->all());
+        return back();
     }
 
     /**
@@ -56,7 +67,9 @@ class SalarypaymentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mdas = Mda::orderBy('name', 'asc')->get();
+        $salarypayments=Salarypayment::where('id',$id)->first();
+        return view('admin.salarypayment.edit', compact('salarypayments','mdas'));
     }
 
     /**
@@ -68,7 +81,20 @@ class SalarypaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'mda_id' => 'required',
+            'amount' => 'required',
+            'salarymonthyear' => 'required',
+        ]);
+
+        $salarypayment = Salarypayment::find($id);
+        $salarypayment->mda_id = $request->mda_id;
+        $salarypayment->amount = $request->amount;
+        $salarypayment->salarymonthyear = $request->salarymonthyear;
+        
+        $salarypayment->save();
+
+        return redirect(route('salarypayments.index'));
     }
 
     /**
@@ -79,6 +105,7 @@ class SalarypaymentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $salarypayments=Salarypayment::where('id',$id)->delete();
+        return redirect()->back();
     }
 }
