@@ -36,8 +36,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-circle-o"></i> Payable</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Receivable</a></li>
+          <li><a href="{{ route('accountpayables.index') }}"><i class="fa fa-circle-o"></i> Payable</a></li>
+          <li><a href="{{ route('accountreceivables.index') }}"><i class="fa fa-circle-o"></i> Receivable</a></li>
           <li><a href="{{ route('ledger.index') }}"><i class="fa fa-circle-o"></i> Ledger</a></li>
         </ul>
       </li>
@@ -53,6 +53,7 @@
         <ul class="treeview-menu">
           <li><a href="{{ route('budgets.index') }}"><i class="fa fa-circle-o"></i> Budget</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Fund Retirement</a></li>
+          <li><a href="{{ route('grants.index') }}"><i class="fa fa-circle-o"></i> Grant</a></li>
         </ul>
       </li>
 

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Accountpayable;
+use App\Accountreceivable;
+use App\Ledger;
 use Illuminate\Http\Request;
 
 class AccountreceivableController extends Controller
@@ -13,7 +16,9 @@ class AccountreceivableController extends Controller
      */
     public function index()
     {
-        //
+        $ledgers = Ledger::orderBy('created_at', 'asc')->get();
+        $accountreceivables = Accountreceivable::orderBy('created_at', 'desc')->get();
+        return view('admin.accountreceivable.index', compact('accountreceivables', 'ledgers'));
     }
 
     /**
@@ -34,7 +39,16 @@ class AccountreceivableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'ledger_id' => 'required',
+            'customername' => 'required',
+            'phone' => 'required',
+            'amount' => 'required',
+            'narration' => 'required',
+        ]);
+
+        Accountreceivable::create($request->all());
+        return back();
     }
 
     /**
@@ -56,7 +70,9 @@ class AccountreceivableController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ledgers = Ledger::orderBy('created_at', 'asc')->get();
+        $accountreceivables = Accountreceivable::where('id', $id)->first();
+        return view('admin.accountreceivable.edit', compact('accountreceivables', 'ledgers'));
     }
 
     /**
@@ -68,7 +84,25 @@ class AccountreceivableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'ledger_id' => 'required',
+            'customername' => 'required',
+            'phone' => 'required',
+            'amount' => 'required',
+            'narration' => 'required',
+        ]);
+
+        $accountreceivable = Accountreceivable::find($id);
+        $accountreceivable->ledger_id = $request->ledger_id;
+        $accountreceivable->customername = $request->customername;
+        $accountreceivable->phone = $request->phone;
+        $accountreceivable->email = $request->email;
+        $accountreceivable->amount = $request->amount;
+        $accountreceivable->narration = $request->narration;
+
+        $accountreceivable->save();
+
+        return redirect(route('accountreceivables.index'));
     }
 
     /**
@@ -79,6 +113,7 @@ class AccountreceivableController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $accountreceivables = Accountreceivable::where('id', $id)->delete();
+        return redirect()->back();
     }
 }

@@ -22,8 +22,8 @@ class ExpenditureController extends Controller
         $budgets = Budget::orderBy('created_at', 'asc')->get();
         $procurements = Procurement::orderBy('created_at', 'asc')->get();
         $salarypayments = Salarypayment::orderBy('created_at', 'asc')->get();
-        $expenditures=Expenditure::orderBy('created_at','desc')->get();
-        return view('admin.expenditure.index', compact('expenditures','ledgers','budgets','procurements','salarypayments'));
+        $expenditures = Expenditure::orderBy('created_at', 'desc')->get();
+        return view('admin.expenditure.index', compact('expenditures', 'ledgers', 'budgets', 'procurements', 'salarypayments'));
     }
 
     /**
@@ -80,8 +80,8 @@ class ExpenditureController extends Controller
         $budgets = Budget::orderBy('created_at', 'asc')->get();
         $procurements = Procurement::orderBy('created_at', 'asc')->get();
         $salarypayments = Salarypayment::orderBy('created_at', 'asc')->get();
-        $expenditures=Expenditure::where('id',$id)->first();
-        return view('admin.expenditure.edit', compact('expenditures','ledgers','budgets','procurements','salarypayments'));
+        $expenditures = Expenditure::where('id', $id)->first();
+        return view('admin.expenditure.edit', compact('expenditures', 'ledgers', 'budgets', 'procurements', 'salarypayments'));
     }
 
     /**
@@ -93,7 +93,26 @@ class ExpenditureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'ledger_id' => 'required',
+            'budget_id' => 'required',
+            'procurement_id' => 'required',
+            'salarypayment_id' => 'required',
+            'datecaptured' => 'required',
+            'expendtype' => 'required',
+        ]);
+
+        $expenditure = Expenditure::find($id);
+        $expenditure->ledger_id = $request->ledger_id;
+        $expenditure->budget_id = $request->budget_id;
+        $expenditure->procurement_id = $request->procurement_id;
+        $expenditure->salarypayment_id = $request->salarypayment_id;
+        $expenditure->datecaptured = $request->datecaptured;
+        $expenditure->expendtype = $request->expendtype;
+        
+        $expenditure->save();
+
+        return redirect(route('expenditures.index'));
     }
 
     /**
@@ -104,6 +123,7 @@ class ExpenditureController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $expenditures = Expenditure::where('id', $id)->delete();
+        return redirect()->back();
     }
 }

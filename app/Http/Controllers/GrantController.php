@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Fromwho;
+use App\Grant;
 use Illuminate\Http\Request;
 
 class GrantController extends Controller
@@ -13,7 +15,9 @@ class GrantController extends Controller
      */
     public function index()
     {
-        //
+        $fromwhos = Fromwho::orderBy('created_at', 'asc')->get();
+        $grants = Grant::orderBy('created_at', 'desc')->get();
+        return view('admin.grant.index', compact('grants', 'fromwhos'));
     }
 
     /**
@@ -34,7 +38,14 @@ class GrantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'amount' => 'required',
+            'comment' => 'required',
+            'fromwho_id' => 'required',
+        ]);
+
+        Grant::create($request->all());
+        return back();
     }
 
     /**
@@ -56,7 +67,9 @@ class GrantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $fromwhos = Fromwho::orderBy('created_at', 'asc')->get();
+        $grants = Grant::where('id', $id)->first();
+        return view('admin.grant.edit', compact('grants', 'fromwhos'));
     }
 
     /**
@@ -68,7 +81,20 @@ class GrantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'amount' => 'required',
+            'comment' => 'required',
+            'fromwho_id' => 'required',
+        ]);
+
+        $grant = Grant::find($id);
+        $grant->amount = $request->amount;
+        $grant->comment = $request->comment;
+        $grant->fromwho_id = $request->fromwho_id;
+                
+        $grant->save();
+
+        return redirect(route('grants.index'));
     }
 
     /**
@@ -79,6 +105,7 @@ class GrantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $grants = Grant::where('id', $id)->delete();
+        return redirect()->back();
     }
 }
