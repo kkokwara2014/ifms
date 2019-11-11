@@ -41,7 +41,7 @@
                                     <td>{{$revenue->revnumber}}</td>
                                     <td>{{$revenue->mda->name}}</td>
                                     <td>&#8358;{{$revenue->amount}}</td>
-                                    
+
                                     <td>{{$revenue->narration}}</td>
                                     <td>{{$revenue->revtype}}</td>
                                     <td>{{$revenue->collectorname}}</td>
@@ -108,14 +108,14 @@
                         </div>
                         <div class="modal-body">
 
-                        <input type="hidden" name="revnumber" value="{{}}">
-                            
+                            <input type="hidden" name="revnumber" value="{{'RV'.rand(7955,12995)*1000}}">
+
                             <div>
-                                <label for="">Department <strong style="color:red">*</strong></label>
-                                <select name="department_id" class="form-control">
-                                    <option selected="disabled">Select Department</option>
-                                    @foreach ($departments as $department)
-                                    <option value="{{$department->id}}">{{$department->name}}</option>
+                                <label for="">MDA <strong style="color:red">*</strong></label>
+                                <select name="mda_id" class="form-control">
+                                    <option selected="disabled">Select MDA</option>
+                                    @foreach ($mdas as $mda)
+                                    <option value="{{$mda->id}}">{{$mda->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -123,18 +123,43 @@
                             <div>
                                 <label for="">Amount <strong style="color:red">*</strong></label>
                                 <input type="text" class="form-control" name="amount" placeholder="Amount"
-                                    maxlength="8">
+                                    maxlength="10">
                             </div>
-                            <div>
-                                <label for="">Purchase Date <strong style="color:red">*</strong></label>
-                                <input type="text" class="form-control" id="datepicker" name="procdate"
-                                    placeholder="Purchase Date">
-                            </div>
+
                             <div>
                                 <label for="">Narration </label>
                                 <textarea class="form-control" name="narration" id="" cols="30" rows="3"
                                     placeholder="Narration"></textarea>
                             </div>
+                            <div>
+                                <label for="">Revenue Type <strong style="color:red">*</strong></label>
+                                <select name="revtype" class="form-control">
+                                    <option selected="disabled">Select Revenue Type</option>
+
+                                    <option></option>
+
+                                </select>
+                            </div>
+                            <div>
+                                <label for="">Collector's Full Name <strong style="color:red">*</strong></label>
+                                <input type="text" class="form-control" name="collectorname"
+                                    placeholder="Collector's Full Name">
+                            </div>
+                            <div>
+                                <label for="">Collector's Phone <strong style="color:red">*</strong></label>
+                                <input type="tel" class="form-control" name="collectorphone"
+                                    placeholder="Collector's Phone Number">
+                            </div>
+                            <div>
+                                <label for="">Ledger <strong style="color:red">*</strong></label>
+                                <select name="ledger_id" class="form-control">
+                                    <option selected="disabled">Select Ledger</option>
+                                    @foreach ($ledgers as $ledger)
+                                    <option value="{{$ledger->id}}">{{$ledger->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
 
                         </div>
                         <div class="modal-footer">
