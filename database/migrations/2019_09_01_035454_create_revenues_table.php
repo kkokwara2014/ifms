@@ -16,8 +16,8 @@ class CreateRevenuesTable extends Migration
         Schema::create('revenues', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('revnumber');
-            $table->integer('mdaid');
-            $table->decimal('amount',10,2);
+            $table->integer('mda_id');
+            $table->string('amount');
             $table->text('narration');
             $table->string('revtype');
             $table->string('collectorename');

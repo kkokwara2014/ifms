@@ -43,6 +43,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('accountpayables','AccountpayableController');
     Route::resource('accountreceivables','AccountreceivableController');
     Route::resource('grants','GrantController');
+    Route::resource('revenues','RevenueController');
 
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 

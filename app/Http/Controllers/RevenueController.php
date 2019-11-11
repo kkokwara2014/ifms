@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Ledger;
+use App\Mda;
+use App\Revenue;
 use Illuminate\Http\Request;
 
 class RevenueController extends Controller
@@ -13,7 +16,10 @@ class RevenueController extends Controller
      */
     public function index()
     {
-        //
+        $mdas = Mda::orderBy('name', 'asc')->get();
+        $ledgers = Ledger::orderBy('name', 'asc')->get();
+        $revenues = Revenue::orderBy('created_at', 'desc')->get();
+        return view('admin.revenue.index', compact('revenues', 'mdas', 'ledgers'));
     }
 
     /**
