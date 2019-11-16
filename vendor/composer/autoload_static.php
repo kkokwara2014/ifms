@@ -408,6 +408,7 @@ class ComposerStaticInitd36932b77ccc39df67a03104fb1c6ec0
         'App\\Accountpayable' => __DIR__ . '/../..' . '/app/Accountpayable.php',
         'App\\Accountreceivable' => __DIR__ . '/../..' . '/app/Accountreceivable.php',
         'App\\Asset' => __DIR__ . '/../..' . '/app/Asset.php',
+        'App\\Bank' => __DIR__ . '/../..' . '/app/Bank.php',
         'App\\Budget' => __DIR__ . '/../..' . '/app/Budget.php',
         'App\\Budgetcategory' => __DIR__ . '/../..' . '/app/Budgetcategory.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',

@@ -9,6 +9,7 @@ return array(
     'App\\Accountpayable' => $baseDir . '/app/Accountpayable.php',
     'App\\Accountreceivable' => $baseDir . '/app/Accountreceivable.php',
     'App\\Asset' => $baseDir . '/app/Asset.php',
+    'App\\Bank' => $baseDir . '/app/Bank.php',
     'App\\Budget' => $baseDir . '/app/Budget.php',
     'App\\Budgetcategory' => $baseDir . '/app/Budgetcategory.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',

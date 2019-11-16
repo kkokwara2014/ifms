@@ -15,6 +15,9 @@ class Employee extends Model
     public function rank(){
         return $this->belongsTo(Rank::class);
     }
+    public function bank(){
+        return $this->belongsTo(Bank::class);
+    }
     public function empunion(){
         return $this->belongsTo(Empunion::class);
     }

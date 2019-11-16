@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Employee;
+use App\Rank;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -13,7 +15,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $ranks = Rank::orderBy('created_at', 'asc')->get();
+        $employees = Employee::orderBy('created_at', 'desc')->get();
+        return view('admin.employee.index', compact('employees', 'ranks'));
     }
 
     /**
