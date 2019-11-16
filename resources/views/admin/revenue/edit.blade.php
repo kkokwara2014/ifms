@@ -27,6 +27,10 @@
                             {{method_field('PUT')}}
 
                             <div>
+                                <input type="hidden" name="revnumber" value="{{$revenues->revnumber}}">
+                            </div>
+
+                            <div>
                                 <label for="">MDA</label>
                                 <select name="mda_id" class="form-control">
                                     <option selected="disabled">Select MDA</option>
@@ -39,7 +43,7 @@
 
                             <div>
                                 <label for="">Amount</label>
-                                <input type="text" class="form-control" name="name" value="{{$revenues->amount}}"
+                                <input type="text" class="form-control" name="amount" value="{{$revenues->amount}}"
                                     maxlength="10">
                             </div>
 

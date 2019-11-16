@@ -103,6 +103,7 @@ class RevenueController extends Controller
         ]);
 
         $revenue = Revenue::find($id);
+        $revenue->revnumber = $request->revnumber;
         $revenue->ledger_id = $request->ledger_id;
         $revenue->mda_id = $request->mda_id;
         $revenue->amount = $request->amount;

@@ -18,6 +18,9 @@ class Employee extends Model
     public function empunion(){
         return $this->belongsTo(Empunion::class);
     }
+    public function department(){
+        return $this->belongsTo(Department::class);
+    }
     public function fundrets(){
         return $this->hasMany(Fundret::class);
     }
