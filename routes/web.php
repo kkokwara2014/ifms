@@ -46,6 +46,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('revenues','RevenueController');
     Route::resource('contractoradvs','ContractoradvController');
     Route::resource('orderadvs','OrderadvController');
+    Route::resource('healthcares','HealthcareController');
 
     Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 

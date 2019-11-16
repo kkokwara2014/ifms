@@ -116,6 +116,7 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="{{ route('revenues.index') }}"><i class="fa fa-circle-o"></i> MDA</a></li>
+          <li><a href="{{ route('healthcares.index') }}"><i class="fa fa-circle-o"></i> Healthcare</a></li>
           {{-- <li><a href="#"><i class="fa fa-circle-o"></i> Morris</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Flot</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Inline charts</a></li> --}}

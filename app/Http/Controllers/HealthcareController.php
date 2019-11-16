@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Healthcare;
+use App\Institutype;
+use App\Ledger;
 use Illuminate\Http\Request;
 
 class HealthcareController extends Controller
@@ -13,7 +16,10 @@ class HealthcareController extends Controller
      */
     public function index()
     {
-        //
+        $ledgers = Ledger::orderBy('created_at', 'asc')->get();
+        $institutypes = Institutype::orderBy('created_at', 'asc')->get();
+        $healthcares = Healthcare::orderBy('created_at', 'desc')->get();
+        return view('admin.healthcare.index', compact('healthcares', 'ledgers','institutypes'));
     }
 
     /**
@@ -34,7 +40,17 @@ class HealthcareController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'institutype_id' => 'required',
+            'ledger_id' => 'required',
+            'hccode' => 'required',
+            'hcname' => 'required',
+            'amount' => 'required',
+            
+        ]);
+
+        Healthcare::create($request->all());
+        return back();
     }
 
     /**
@@ -56,7 +72,10 @@ class HealthcareController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ledgers = Ledger::orderBy('created_at', 'asc')->get();
+        $institutypes = Institutype::orderBy('created_at', 'asc')->get();
+        $healthcares = Healthcare::where('id', $id)->first();
+        return view('admin.healthcare.edit', compact('healthcares', 'ledgers','institutypes'));
     }
 
     /**
@@ -68,7 +87,18 @@ class HealthcareController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $healthcare = Healthcare::find($id);
+        $healthcare->institutype_id = $request->institutype_id;
+        $healthcare->ledger_id = $request->ledger_id;
+        $healthcare->hccode = $request->hccode;
+        $healthcare->hcname = $request->hcname;
+        $healthcare->amount = $request->amount;
+     
+
+        $healthcare->save();
+
+        return redirect(route('healthcares.index'));
     }
 
     /**
