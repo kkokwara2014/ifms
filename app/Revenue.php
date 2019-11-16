@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Revenue extends Model
 {
 
-    protected $fillable=['revnumber','mda_id','amount','narration','revtype','collectorname','collectorphone','ledger_id'];
+    protected $fillable=['revnumber','mda_id','amount','narration','revtype','collectorname','collectorphone','ledger_id','paidby'];
 
     public function ledger(){
         return $this->belongsTo(Ledger::class);

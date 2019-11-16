@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Healthcare extends Model
 {
 
-    protected $fillable=['institutype','ledger_id','hccode','hcname','amount'];
+    protected $fillable=['institutype_id','ledger_id','hccode','hcname','amount'];
     
     public function ledger(){
         return $this->belongsTo(Ledger::class);

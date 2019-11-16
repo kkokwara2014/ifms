@@ -135,9 +135,13 @@
                                 <label for="">Revenue Type <strong style="color:red">*</strong></label>
                                 <select name="revtype" class="form-control">
                                     <option selected="disabled">Select Revenue Type</option>
-
-                                    <option></option>
-
+                                    <option>Capitation Rate</option>
+                                    <option>Property/Tenement Rate</option>
+                                    <option>License Fees</option>
+                                    <option>Wheel Barrow</option>
+                                    <option>Trucks</option>
+                                    <option>CHarges on Abattoirs</option>
+                                    <option>Impounding on Strayed Animals</option>
                                 </select>
                             </div>
                             <div>

@@ -29,7 +29,7 @@ class RevenueController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -40,7 +40,21 @@ class RevenueController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'mda_id'=>'required',
+            'ledger_id'=>'required',
+            'amount'=>'required',
+            'narration'=>'required',
+            'revtype'=>'required',
+            'collectorname'=>'required',
+            'collectorname'=>'required',
+            'collectorphone'=>'required',
+            'paidby'=>'required',
+        ]);
+
+
+        Revenue::create($request->all());
+        return back();
     }
 
     /**
@@ -62,7 +76,10 @@ class RevenueController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mdas = Mda::orderBy('name', 'asc')->get();
+        $ledgers = Ledger::orderBy('name', 'asc')->get();
+        $revenues = Revenue::where('id', $id)->first();
+        return view('admin.revenue.edit', compact('revenues', 'mdas', 'ledgers'));
     }
 
     /**
@@ -74,7 +91,32 @@ class RevenueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $this->validate($request,[
+            'mda_id'=>'required',
+            'ledger_id'=>'required',
+            'amount'=>'required',
+            'narration'=>'required',
+            'revtype'=>'required',
+            'collectorname'=>'required',
+            'collectorname'=>'required',
+            'collectorphone'=>'required',
+            'paidby'=>'required',
+        ]);
+
+        $revenue = Revenue::find($id);
+        $revenue->ledger_id = $request->ledger_id;
+        $revenue->mda_id = $request->mda_id;
+        $revenue->supplier_id = $request->supplier_id;
+        $revenue->stock_id = $request->stock_id;
+        $revenue->amount = $request->amount;
+        $revenue->qty = $request->qty;
+        $revenue->description = $request->description;
+        
+
+        $revenue->save();
+
+        return redirect(route('revenues.index'));
     }
 
     /**

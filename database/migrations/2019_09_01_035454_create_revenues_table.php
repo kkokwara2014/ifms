@@ -23,6 +23,7 @@ class CreateRevenuesTable extends Migration
             $table->string('collectorename');
             $table->string('collectorphone');
             $table->integer('ledger_id');
+            $table->string('paidby');
             $table->timestamps();
         });
     }

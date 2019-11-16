@@ -8,8 +8,8 @@
 <div class="row">
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
-        <a href="{{ route('accountpayables.index') }}" class="btn btn-success">
-            <span class="fa fa-eye"></span> All Account Receivables
+        <a href="{{ route('healthcares.index') }}" class="btn btn-success">
+            <span class="fa fa-eye"></span> All Healthcare Revenues
         </a>
         <br><br>
 
@@ -19,47 +19,48 @@
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{ route('accountreceivables.update',$accountreceivables->id) }}" method="post">
+                        <form action="{{ route('healthcares.update',$healthcares->id) }}" method="post">
                             {{ csrf_field() }}
                             {{method_field('PUT')}}
 
+                            <div>
+                                <label for="">Institution Type</label>
+                                <select name="institutype_id" class="form-control">
+                                    <option selected="disabled">Select Institution Type</option>
+                                    @foreach ($institutypes as $institutype)
+                                    <option value="{{$institutype->id}}"
+                                        {{$institutype->id==$healthcares->institutype_id ? 'selected':''}}>
+                                        {{$institutype->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div>
                                 <label for="">Ledger</label>
                                 <select name="ledger_id" class="form-control">
                                     <option selected="disabled">Select Ledger</option>
                                     @foreach ($ledgers as $ledger)
                                     <option value="{{$ledger->id}}"
-                                        {{$ledger->id==$accountreceivables->ledger_id ? 'selected':''}}>
+                                        {{$ledger->id==$healthcares->ledger_id ? 'selected':''}}>
                                         {{$ledger->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div>
-                                <label for="">Customer</label>
-                                <input type="text" class="form-control" name="customername" value="{{$accountreceivables->customername}}">
+                                <label for="">Healthcare Code</label>
+                                <input type="text" class="form-control" name="hccode" value="{{$healthcares->hccode}}">
                             </div>
                             <div>
-                                <label for="">Phone</label>
-                                <input type="tel" class="form-control" name="phone" value="{{$accountreceivables->phone}}" maxlength="11">
+                                <label for="">Healthcare Name</label>
+                                <input type="text" class="form-control" name="hcname" value="{{$healthcares->hcname}}">
                             </div>
-                            <div>
-                                <label for="">Email</label>
-                                <input type="email" class="form-control" name="email" value="{{$accountreceivables->email}}">
-                            </div>
+
                             <div>
                                 <label for="">Amount</label>
-                                <input type="text" class="form-control" name="amount" value="{{$accountreceivables->amount}}">
+                                <input type="text" class="form-control" name="amount" value="{{$healthcares->amount}}">
                             </div>
-                            <div>
-                                <label for="">Narration</label>
-                                <textarea class="form-control" name="narration" id="" cols="30" rows="3"
-                                    placeholder="Narration">{{$accountreceivables->narration}}</textarea>
-
-                            </div>
-                            
                             <br>
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{ route('accountreceivables.index') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('healthcares.index') }}" class="btn btn-default">Cancel</a>
 
                     </div>
                     </form>

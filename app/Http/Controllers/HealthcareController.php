@@ -87,6 +87,14 @@ class HealthcareController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'institutype_id' => 'required',
+            'ledger_id' => 'required',
+            'hccode' => 'required',
+            'hcname' => 'required',
+            'amount' => 'required',
+            
+        ]);
         
         $healthcare = Healthcare::find($id);
         $healthcare->institutype_id = $request->institutype_id;
@@ -109,6 +117,7 @@ class HealthcareController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $healthcares=Healthcare::where('id',$id)->delete();
+        return redirect()->back();
     }
 }
