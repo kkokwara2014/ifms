@@ -68,7 +68,7 @@
         <ul class="treeview-menu">
           <li><a href="{{ route('mda.index') }}"><i class="fa fa-circle-o"></i> MDA</a></li>
           <li><a href="{{ route('department.index') }}"><i class="fa fa-circle-o"></i> Department</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Employee</a></li>
+          <li><a href="{{ route('employees.index') }}"><i class="fa fa-circle-o"></i> Employee</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Appraisal</a></li>
         </ul>
       </li>

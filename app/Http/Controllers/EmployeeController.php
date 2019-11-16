@@ -80,7 +80,13 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $ranks = Rank::orderBy('created_at', 'asc')->get();
+        $banks = Bank::orderBy('created_at', 'asc')->get();
+        $departments = Department::orderBy('created_at', 'asc')->get();
+        $empunions = Empunion::orderBy('created_at', 'asc')->get();
+        $qualifications = Qualification::orderBy('created_at', 'asc')->get();
+        $employees = Employee::where('id', $id)->first();
+        return view('admin.employee.show', compact('employees', 'ranks', 'banks', 'departments', 'empunions', 'qualifications'));
     }
 
     /**

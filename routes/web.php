@@ -32,7 +32,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('supplier','SupplierController');
     Route::resource('department','DepartmentController');
     Route::resource('inventory','InventoryController');
-    Route::resource('employee','EmployeeController');
+    Route::resource('employees','EmployeeController');
     Route::resource('stocks','StocksController');
     Route::resource('orders','OrderController');
     Route::resource('purchases','ProcurementController');
