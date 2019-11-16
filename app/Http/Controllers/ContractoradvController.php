@@ -19,7 +19,7 @@ class ContractoradvController extends Controller
         $ledgers = Ledger::orderBy('created_at', 'asc')->get();
         $contractors = Contractor::orderBy('created_at', 'asc')->get();
         $contractoradvs = Contractoradv::orderBy('created_at', 'desc')->get();
-        return view('admin.contractoradv.index', compact('contractoradvs', 'ledgers','contractors'));
+        return view('admin.contractoradv.index', compact('contractoradvs', 'ledgers', 'contractors'));
     }
 
     /**
@@ -40,7 +40,16 @@ class ContractoradvController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'ledger_id' => 'required',
+            'contractor_id' => 'required',
+            'amount' => 'required',
+            'purpose' => 'required',
+            'awardedby' => 'required',
+        ]);
+
+        Contractoradv::create($request->all());
+        return back();
     }
 
     /**
@@ -62,7 +71,10 @@ class ContractoradvController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ledgers = Ledger::orderBy('created_at', 'asc')->get();
+        $contractors = Contractor::orderBy('created_at', 'asc')->get();
+        $contractoradvs = Contractoradv::where('id', $id)->first();
+        return view('admin.contractoradv.edit', compact('contractoradvs', 'ledgers', 'contractors'));
     }
 
     /**
@@ -74,7 +86,26 @@ class ContractoradvController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'ledger_id' => 'required',
+            'contractor_id' => 'required',
+            'amount' => 'required',
+            'purpose' => 'required',
+            'awardedby' => 'required',
+        ]);
+        
+
+        $contractoradv = Contractoradv::find($id);
+        $contractoradv->ledger_id = $request->ledger_id;
+        $contractoradv->contractor_id = $request->contractor_id;
+        $contractoradv->amount = $request->amount;
+        $contractoradv->purpose = $request->purpose;
+        $contractoradv->awardedby = $request->awardedby;
+        
+
+        $contractoradv->save();
+
+        return redirect(route('contractoradv.index'));
     }
 
     /**
@@ -85,6 +116,7 @@ class ContractoradvController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contractoradvs = Contractoradv::where('id', $id)->delete();
+        return redirect()->back();
     }
 }

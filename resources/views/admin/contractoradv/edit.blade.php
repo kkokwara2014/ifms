@@ -8,8 +8,8 @@
 <div class="row">
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
-        <a href="{{ route('accountpayables.index') }}" class="btn btn-success">
-            <span class="fa fa-eye"></span> All Account Receivables
+        <a href="{{ route('contractoradvs.index') }}" class="btn btn-success">
+            <span class="fa fa-eye"></span> All Contractor Advances
         </a>
         <br><br>
 
@@ -19,7 +19,7 @@
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{ route('accountreceivables.update',$accountreceivables->id) }}" method="post">
+                        <form action="{{ route('contractoradvs.update',$contractoradvs->id) }}" method="post">
                             {{ csrf_field() }}
                             {{method_field('PUT')}}
 
@@ -29,37 +29,45 @@
                                     <option selected="disabled">Select Ledger</option>
                                     @foreach ($ledgers as $ledger)
                                     <option value="{{$ledger->id}}"
-                                        {{$ledger->id==$accountreceivables->ledger_id ? 'selected':''}}>
+                                        {{$ledger->id==$contractoradvs->ledger_id ? 'selected':''}}>
                                         {{$ledger->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div>
-                                <label for="">Customer</label>
-                                <input type="text" class="form-control" name="customername" value="{{$accountreceivables->customername}}">
+                                <label for="">Contractor</label>
+                                <select name="contractor_id" class="form-control">
+                                    <option selected="disabled">Select contractor</option>
+                                    @foreach ($contractors as $contractor)
+                                    <option value="{{$contractor->id}}"
+                                        {{$contractor->id==$contractoradvs->contractor_id ? 'selected':''}}>
+                                        {{$contractor->fullname .' - '.$contractor->contnumber}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div>
-                                <label for="">Phone</label>
-                                <input type="tel" class="form-control" name="phone" value="{{$accountreceivables->phone}}" maxlength="11">
-                            </div>
-                            <div>
-                                <label for="">Email</label>
-                                <input type="email" class="form-control" name="email" value="{{$accountreceivables->email}}">
-                            </div>
+
                             <div>
                                 <label for="">Amount</label>
-                                <input type="text" class="form-control" name="amount" value="{{$accountreceivables->amount}}">
+                                <input type="text" class="form-control" name="amount"
+                                    value="{{$contractoradvs->amount}}">
                             </div>
                             <div>
-                                <label for="">Narration</label>
-                                <textarea class="form-control" name="narration" id="" cols="30" rows="3"
-                                    placeholder="Narration">{{$accountreceivables->narration}}</textarea>
-
+                                <label for="">Purpose</label>
+                                <textarea class="form-control" name="purpose" id="" cols="30" rows="3"
+                                    placeholder="purpose">{{$contractoradvs->purpose}}</textarea>
                             </div>
-                            
+                            <div>
+                                <label for="">Awarded By <strong style="color:red">*</strong></label>
+                                <select name="awardedby" class="form-control">
+                                    <option selected="disabled">Select Awarding Body</option>
+                                    <option>Federal Government (FG)</option>
+                                    <option>State Government</option>
+                                    <option>World Bank</option>
+                                </select>
+                            </div>
                             <br>
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{ route('accountreceivables.index') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('contractoradvs.index') }}" class="btn btn-default">Cancel</a>
 
                     </div>
                     </form>

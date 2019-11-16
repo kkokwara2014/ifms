@@ -38,11 +38,13 @@
                                 <tr>
 
                                     <td>{{$contractoradv->ledger->name}}</td>
-                                    <td>{{$contractoradv->contractor->name}}</td>
-                                    <td>{{$contractoradv->customername}}</td>
-                                    <td>{{$contractoradv->phone}}</td>
+                                    <td>{{$contractoradv->contractor->fullname}}</td>
+                                    <td>{{$contractoradv->contractor->phone}}</td>
+
+
                                     <td>&#8358;{{$contractoradv->amount}}</td>
-                                    <td>{{$contractoradv->narration}}</td>
+                                    <td>{{$contractoradv->purpose}}</td>
+                                    <td>{{$contractoradv->awardedby}}</td>
 
 
                                     <td><a href="{{ route('contractoradvs.edit',$contractoradv->id) }}"><span
@@ -113,28 +115,37 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="">Customer <strong style="color:red">*</strong></label>
-                                <input type="text" class="form-control" name="customername"
-                                    placeholder="Customer's Full Name">
+                                <label for="">Contractor <strong style="color:red">*</strong></label>
+                                <select name="contractor_id" class="form-control">
+                                    <option selected="disabled">Select Contractor</option>
+                                    @foreach ($contractors as $contractor)
+                                    <option value="{{$contractor->id}}">
+                                        {{$contractor->fullname .' - '.$contractor->contnumber}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div>
-                                <label for="">Phone <strong style="color:red">*</strong></label>
-                                <input type="text" class="form-control" name="phone" placeholder="Phone" maxlength="11">
-                            </div>
-                            <div>
-                                <label for="">Email Address <strong style="color:red">*</strong></label>
-                                <input type="email" class="form-control" name="email" placeholder="Email Address">
-                            </div>
+
                             <div>
                                 <label for="">Amount <strong style="color:red">*</strong></label>
                                 <input type="text" class="form-control" name="amount" placeholder="Amount"
                                     maxlength="10">
                             </div>
                             <div>
-                                <label for="">Narration </label>
-                                <textarea class="form-control" name="narration" id="" cols="30" rows="3"
-                                    placeholder="Narration"></textarea>
+                                <label for="">Purpose </label>
+                                <textarea class="form-control" name="purpose" id="" cols="30" rows="3"
+                                    placeholder="Purpose"></textarea>
                             </div>
+                            <div>
+                                <label for="">Awarded By <strong style="color:red">*</strong></label>
+                                <select name="awardedby" class="form-control">
+                                    <option selected="disabled">Select Awarding Body</option>
+                                    <option>Federal Government (FG)</option>
+                                    <option>State Government</option>
+                                    <option>World Bank</option>
+
+                                </select>
+                            </div>
+
 
                         </div>
                         <div class="modal-footer">
