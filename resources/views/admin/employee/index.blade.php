@@ -9,7 +9,7 @@
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-            <span class="fa fa-plus"></span> Add Contractor Advance
+            <span class="fa fa-plus"></span> Add Employee
         </button>
         <br><br>
 
@@ -22,12 +22,14 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Ledger</th>
-                                    <th>Contractor</th>
+                                    <th>Staff ID.</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Amount</th>
-                                    <th>Purpose</th>
-                                    <th>Awarded By</th>
+                                    <th>Department</th>
+                                    <th>Designation</th>
+                                    
+                                    <th>View Details</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
 
@@ -72,12 +74,14 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Ledger</th>
-                                    <th>Contractor</th>
+                                    <th>Staff ID.</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Amount</th>
-                                    <th>Purpose</th>
-                                    <th>Awarded By</th>
+                                    <th>Department</th>
+                                    <th>Designation</th>
+                                    
+                                    <th>View Details</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -93,7 +97,7 @@
 
         {{-- Data input modal area --}}
         <div class="modal fade" id="modal-default">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
 
                 <form action="{{ route('contractoradvs.store') }}" method="post">
                     {{ csrf_field() }}
