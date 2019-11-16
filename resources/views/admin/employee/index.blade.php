@@ -127,7 +127,7 @@
                                     </div>
                                     <div>
                                         <label for="">Address </label>
-                                        <textarea class="form-control" name="address" id="" cols="30" rows="3"
+                                        <textarea class="form-control" name="address" id="" cols="30" rows="2"
                                             placeholder="Contact Address"></textarea>
                                     </div>
                                     <div>
@@ -181,9 +181,72 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div>
+                                        <label for="">Bank Account <strong style="color:red">*</strong></label>
+                                        <input type="text" class="form-control" name="bankaccount"
+                                            placeholder="Bank Account" maxlength="10">
+                                    </div>
+                                    <div>
+                                        <label for="">Basic Salary <strong style="color:red">*</strong></label>
+                                        <input type="text" class="form-control" name="basicsalary"
+                                            placeholder="Basic Salary" maxlength="10">
+                                    </div>
 
                                 </div>
-                                <div class="col-md-4"></div>
+                                <div class="col-md-4">
+                                    <div>
+                                        <label for="">Net Pay <strong style="color:red">*</strong></label>
+                                        <input type="text" class="form-control" name="netpay" placeholder="Net Pay"
+                                            maxlength="10">
+                                    </div>
+                                    <div>
+                                        <label for="">Total Allowance <strong style="color:red">*</strong></label>
+                                        <input type="text" class="form-control" name="totalallow"
+                                            placeholder="Total Allowance" maxlength="10">
+                                    </div>
+                                    <div>
+                                        <label for="">Deductions <strong style="color:red">*</strong></label>
+                                        <input type="text" class="form-control" name="deductions"
+                                            placeholder="Deductions" maxlength="10">
+                                    </div>
+                                    <div>
+                                        <label for="">Department <strong style="color:red">*</strong></label>
+                                        <select name="department_id" class="form-control">
+                                            <option selected="disabled">Select Department</option>
+                                            @foreach ($departments as $department)
+                                            <option value="{{$department->id}}">{{$department->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="">Union <strong style="color:red">*</strong></label>
+                                        <select name="empunion_id" class="form-control">
+                                            <option selected="disabled">Select Union</option>
+                                            @foreach ($empunions as $empunion)
+                                            <option value="{{$empunion->id}}">{{$empunion->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="">Rank <strong style="color:red">*</strong></label>
+                                        <select name="rank_id" class="form-control">
+                                            <option selected="disabled">Select Rank</option>
+                                            @foreach ($ranks as $rank)
+                                            <option value="{{$rank->id}}">{{$rank->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="">Qualification <strong style="color:red">*</strong></label>
+                                        <select name="qualification_id" class="form-control">
+                                            <option selected="disabled">Select Qualification</option>
+                                            @foreach ($qualifications as $qualification)
+                                            <option value="{{$qualification->id}}">{{$qualification->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                </div>
                             </div>
 
                             {{-- <div>

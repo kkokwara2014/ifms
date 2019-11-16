@@ -19,11 +19,11 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $ranks = Rank::orderBy('created_at', 'asc')->get();
-        $banks = Bank::orderBy('created_at', 'asc')->get();
-        $departments = Department::orderBy('created_at', 'asc')->get();
-        $empunions = Empunion::orderBy('created_at', 'asc')->get();
-        $qualifications = Qualification::orderBy('created_at', 'asc')->get();
+        $ranks = Rank::orderBy('name', 'asc')->get();
+        $banks = Bank::orderBy('name', 'asc')->get();
+        $departments = Department::orderBy('name', 'asc')->get();
+        $empunions = Empunion::orderBy('name', 'asc')->get();
+        $qualifications = Qualification::orderBy('name', 'asc')->get();
         $employees = Employee::orderBy('created_at', 'desc')->get();
         return view('admin.employee.index', compact('employees', 'ranks', 'banks', 'departments', 'empunions', 'qualifications'));
     }
@@ -80,11 +80,11 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $ranks = Rank::orderBy('created_at', 'asc')->get();
-        $banks = Bank::orderBy('created_at', 'asc')->get();
-        $departments = Department::orderBy('created_at', 'asc')->get();
-        $empunions = Empunion::orderBy('created_at', 'asc')->get();
-        $qualifications = Qualification::orderBy('created_at', 'asc')->get();
+        $ranks = Rank::orderBy('name', 'asc')->get();
+        $banks = Bank::orderBy('name', 'asc')->get();
+        $departments = Department::orderBy('name', 'asc')->get();
+        $empunions = Empunion::orderBy('name', 'asc')->get();
+        $qualifications = Qualification::orderBy('name', 'asc')->get();
         $employees = Employee::where('id', $id)->first();
         return view('admin.employee.show', compact('employees', 'ranks', 'banks', 'departments', 'empunions', 'qualifications'));
     }
@@ -97,11 +97,11 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $ranks = Rank::orderBy('created_at', 'asc')->get();
-        $banks = Bank::orderBy('created_at', 'asc')->get();
-        $departments = Department::orderBy('created_at', 'asc')->get();
-        $empunions = Empunion::orderBy('created_at', 'asc')->get();
-        $qualifications = Qualification::orderBy('created_at', 'asc')->get();
+        $ranks = Rank::orderBy('name', 'asc')->get();
+        $banks = Bank::orderBy('name', 'asc')->get();
+        $departments = Department::orderBy('name', 'asc')->get();
+        $empunions = Empunion::orderBy('name', 'asc')->get();
+        $qualifications = Qualification::orderBy('name', 'asc')->get();
         $employees = Employee::where('id', $id)->first();
         return view('admin.employee.index', compact('employees', 'ranks', 'banks', 'departments', 'empunions', 'qualifications'));
     }
@@ -159,6 +159,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $banks=Bank::where('id',$id)->delete();
+        return redirect()->back();
     }
 }
