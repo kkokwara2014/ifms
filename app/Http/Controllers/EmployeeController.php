@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Bank;
+use App\Department;
 use App\Employee;
+use App\Empunion;
+use App\Qualification;
 use App\Rank;
 use Illuminate\Http\Request;
 
@@ -16,8 +20,12 @@ class EmployeeController extends Controller
     public function index()
     {
         $ranks = Rank::orderBy('created_at', 'asc')->get();
+        $banks = Bank::orderBy('created_at', 'asc')->get();
+        $departments = Department::orderBy('created_at', 'asc')->get();
+        $empunions = Empunion::orderBy('created_at', 'asc')->get();
+        $qualifications = Qualification::orderBy('created_at', 'asc')->get();
         $employees = Employee::orderBy('created_at', 'desc')->get();
-        return view('admin.employee.index', compact('employees', 'ranks'));
+        return view('admin.employee.index', compact('employees', 'ranks','banks','departments','empunions','qualifications'));
     }
 
     /**
@@ -60,7 +68,13 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ranks = Rank::orderBy('created_at', 'asc')->get();
+        $banks = Bank::orderBy('created_at', 'asc')->get();
+        $departments = Department::orderBy('created_at', 'asc')->get();
+        $empunions = Empunion::orderBy('created_at', 'asc')->get();
+        $qualifications = Qualification::orderBy('created_at', 'asc')->get();
+        $employees = Employee::where('id', $id)->first();
+        return view('admin.employee.index', compact('employees', 'ranks','banks','departments','empunions','qualifications'));
     }
 
     /**

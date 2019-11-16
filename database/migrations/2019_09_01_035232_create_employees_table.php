@@ -28,15 +28,16 @@ class CreateEmployeesTable extends Migration
             $table->string('appointmentdate');
             $table->integer('bank_id');
             $table->string('bankaccount');
-            $table->decimal('basicsalary', 10, 2);
-            $table->decimal('netpay', 10, 2);
-            $table->decimal('totalallow', 10, 2);
-            $table->decimal('deductions', 10, 2);
+            $table->string('basicsalary');
+            $table->string('netpay');
+            $table->string('totalallow');
+            $table->string('deductions');
             $table->integer('department_id');
             $table->integer('empunion_id');
             $table->integer('rank_id');
             $table->integer('qualification_id');
-            $table->text('empimage');
+            $table->text('empimage')->default('defaultuserimage.jpg');
+            $table->tinyInteger('isactive')->default('1');
             $table->timestamps();
         });
     }
