@@ -42,7 +42,17 @@ class OrderadvController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'ledger_id' => 'required',
+            'supplier_id' => 'required',
+            'stock_id' => 'required',
+            'amount' => 'required',
+            'qty' => 'required',
+            'description' => 'required',
+        ]);
+
+        Orderadv::create($request->all());
+        return back();
     }
 
     /**
@@ -64,7 +74,11 @@ class OrderadvController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ledgers = Ledger::orderBy('created_at', 'asc')->get();
+        $suppliers = Supplier::orderBy('created_at', 'asc')->get();
+        $stocks = Stock::orderBy('created_at', 'asc')->get();
+        $orderadvs = Orderadv::where('id', $id)->first();
+        return view('admin.orderadv.edit', compact('orderadvs', 'ledgers', 'suppliers','stocks'));
     }
 
     /**
@@ -76,7 +90,27 @@ class OrderadvController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'ledger_id' => 'required',
+            'supplier_id' => 'required',
+            'stock_id' => 'required',
+            'amount' => 'required',
+            'qty' => 'required',
+            'description' => 'required',
+        ]);
+
+        $orderadv = Orderadv::find($id);
+        $orderadv->ledger_id = $request->ledger_id;
+        $orderadv->supplier_id = $request->supplier_id;
+        $orderadv->stock_id = $request->stock_id;
+        $orderadv->amount = $request->amount;
+        $orderadv->qty = $request->qty;
+        $orderadv->description = $request->description;
+        
+
+        $orderadv->save();
+
+        return redirect(route('orderadvs.index'));
     }
 
     /**
@@ -87,6 +121,7 @@ class OrderadvController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $orderadvs = Orderadv::where('id', $id)->delete();
+        return redirect()->back();
     }
 }

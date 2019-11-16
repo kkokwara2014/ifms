@@ -140,7 +140,7 @@
                             <div>
                                 <label for="">Quantity <strong style="color:red">*</strong></label>
                                 <input type="number" class="form-control" name="qty" placeholder="Quantity"
-                                    min="0">
+                                    min="0" oninput="validity.valid||(value='');">
                             </div>
                             <div>
                                 <label for="">Description </label>

@@ -8,8 +8,8 @@
 <div class="row">
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
-        <a href="{{ route('contractoradvs.index') }}" class="btn btn-success">
-            <span class="fa fa-eye"></span> All Contractor Advances
+        <a href="{{ route('orderadvs.index') }}" class="btn btn-success">
+            <span class="fa fa-eye"></span> All Order Advances
         </a>
         <br><br>
 
@@ -19,7 +19,7 @@
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{ route('contractoradvs.update',$contractoradvs->id) }}" method="post">
+                        <form action="{{ route('orderadvs.update',$orderadvs->id) }}" method="post">
                             {{ csrf_field() }}
                             {{method_field('PUT')}}
 
@@ -29,45 +29,51 @@
                                     <option selected="disabled">Select Ledger</option>
                                     @foreach ($ledgers as $ledger)
                                     <option value="{{$ledger->id}}"
-                                        {{$ledger->id==$contractoradvs->ledger_id ? 'selected':''}}>
+                                        {{$ledger->id==$orderadvs->ledger_id ? 'selected':''}}>
                                         {{$ledger->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div>
-                                <label for="">Contractor</label>
-                                <select name="contractor_id" class="form-control">
-                                    <option selected="disabled">Select contractor</option>
-                                    @foreach ($contractors as $contractor)
-                                    <option value="{{$contractor->id}}"
-                                        {{$contractor->id==$contractoradvs->contractor_id ? 'selected':''}}>
-                                        {{$contractor->fullname .' - '.$contractor->contnumber}}</option>
+                                <label for="">Supplier</label>
+                                <select name="supplier_id" class="form-control">
+                                    <option selected="disabled">Select Supplier</option>
+                                    @foreach ($suppliers as $supplier)
+                                    <option value="{{$supplier->id}}"
+                                        {{$supplier->id==$orderadvs->supplier_id ? 'selected':''}}>
+                                        {{$supplier->fullname .' - '.$supplier->supnumber}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <label for="">Stock</label>
+                                <select name="stock_id" class="form-control">
+                                    <option selected="disabled">Select Stock</option>
+                                    @foreach ($stocks as $stock)
+                                    <option value="{{$stock->id}}" {{$stock->id==$orderadvs->stock_id ? 'selected':''}}>
+                                        {{$stock->item}}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div>
                                 <label for="">Amount</label>
-                                <input type="text" class="form-control" name="amount"
-                                    value="{{$contractoradvs->amount}}">
+                                <input type="text" class="form-control" name="amount" value="{{$orderadvs->amount}}">
                             </div>
                             <div>
-                                <label for="">Purpose</label>
-                                <textarea class="form-control" name="purpose" id="" cols="30" rows="3"
-                                    placeholder="purpose">{{$contractoradvs->purpose}}</textarea>
+                                <label for="">Quantity <strong style="color:red">*</strong></label>
+                                <input type="number" class="form-control" name="qty" placeholder="Quantity" min="0"
+                                    oninput="validity.valid||(value='');" value="{{$orderadvs->qty}}">
                             </div>
                             <div>
-                                <label for="">Awarded By <strong style="color:red">*</strong></label>
-                                <select name="awardedby" class="form-control">
-                                    <option selected="disabled">Select Awarding Body</option>
-                                    <option>Federal Government (FG)</option>
-                                    <option>State Government</option>
-                                    <option>World Bank</option>
-                                </select>
+                                <label for="">Description </label>
+                                <textarea class="form-control" name="description" id="" cols="30" rows="3"
+                                    placeholder="description">{{$orderadvs->description}}</textarea>
                             </div>
+
                             <br>
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{ route('contractoradvs.index') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('orderadvs.index') }}" class="btn btn-default">Cancel</a>
 
                     </div>
                     </form>
