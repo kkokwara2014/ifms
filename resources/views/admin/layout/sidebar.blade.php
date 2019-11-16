@@ -132,7 +132,7 @@
         <ul class="treeview-menu">
           <li><a href="#"><i class="fa fa-circle-o"></i> Employee Advance</a></li>
         <li><a href="{{route('contractoradvs.index')}}"><i class="fa fa-circle-o"></i> Contractor Advance</a></li>
-          <li><a href="#"><i class="fa fa-circle-o"></i> Order Advance</a></li>
+          <li><a href="{{route('orderadvs.index')}}"><i class="fa fa-circle-o"></i> Order Advance</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Supplier Advance</a></li>
           <li><a href="#"><i class="fa fa-circle-o"></i> Tour Advance</a></li>
         </ul>

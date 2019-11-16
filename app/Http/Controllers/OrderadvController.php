@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Ledger;
+use App\Orderadv;
+use App\Stock;
+use App\Supplier;
 use Illuminate\Http\Request;
 
 class OrderadvController extends Controller
@@ -13,7 +17,11 @@ class OrderadvController extends Controller
      */
     public function index()
     {
-        //
+        $ledgers = Ledger::orderBy('created_at', 'asc')->get();
+        $suppliers = Supplier::orderBy('created_at', 'asc')->get();
+        $stocks = Stock::orderBy('created_at', 'asc')->get();
+        $orderadvs = Orderadv::orderBy('created_at', 'desc')->get();
+        return view('admin.orderadv.index', compact('orderadvs', 'ledgers', 'suppliers','stocks'));
     }
 
     /**
