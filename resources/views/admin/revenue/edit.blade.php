@@ -8,64 +8,91 @@
 <div class="row">
     <!-- Left col -->
     <section class="col-lg-12 connectedSortable">
-        <a href="{{ route('purchases.index') }}" class="btn btn-success">
-            <span class="fa fa-eye"></span> All Purchases
+        <a href="{{ route('revenues.index') }}" class="btn btn-success">
+            <span class="fa fa-eye"></span> All revenues
         </a>
         <br><br>
 
         <div class="row">
             <div class="col-md-6">
-
+                <div>
+                    <label for="">Revenue ID: {{$revenues->revnumber}}</label>
+                </div>
+                
                 <div class="box">
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{ route('purchases.update',$purchases->id) }}" method="post">
+                        <form action="{{ route('revenues.update',$revenues->id) }}" method="post">
                             {{ csrf_field() }}
                             {{method_field('PUT')}}
-                            <div>
-                                <label for="">Order</label>
-                                <select name="order_id" class="form-control">
-                                    <option selected="disabled">Select order</option>
-                                    @foreach ($orders as $order)
-                                    <option value="{{$order->id}}" {{$order->id==$purchases->order_id ? 'selected':''}}>
-                                        {{$order->stock->item.' - '.$order->qty}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
 
                             <div>
-                                <label for="">Department</label>
-                                <select name="department_id" class="form-control">
-                                    <option selected="disabled">Select Department</option>
-                                    @foreach ($departments as $department)
-                                    <option value="{{$department->id}}"
-                                        {{$department->id==$purchases->department_id ? 'selected':''}}>
-                                        {{$department->name}}</option>
+                                <label for="">MDA</label>
+                                <select name="mda_id" class="form-control">
+                                    <option selected="disabled">Select MDA</option>
+                                    @foreach ($mdas as $mda)
+                                    <option value="{{$mda->id}}" {{$mda->id==$revenues->mda_id ? 'selected':''}}>
+                                        {{$mda->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div>
                                 <label for="">Amount</label>
-                                <input type="text" class="form-control" name="name" value="{{$purchases->amount}}"
-                                    maxlength="8">
+                                <input type="text" class="form-control" name="name" value="{{$revenues->amount}}"
+                                    maxlength="10">
                             </div>
-                            <div>
-                                <label for="">Purchase Date</label>
-                                <input type="text" class="form-control" id="datepicker" name="acquisitiondate"
-                                    placeholder="Purchase Date" value="{{$purchases->procdate}}">
-                            </div>
+
                             <div>
                                 <label for="">Narration</label>
                                 <textarea class="form-control" name="narration" id="" cols="30" rows="3"
-                                    placeholder="Narration">{{$purchases->narration}}</textarea>
-
+                                    placeholder="Narration">{{$revenues->narration}}</textarea>
                             </div>
+                            <div>
+                                <label for="">Revenue Type <strong style="color:red">*</strong></label>
+                                <select name="revtype" class="form-control">
+                                    <option selected="disabled">Select Revenue Type</option>
+                                    <option>Capitation Rate</option>
+                                    <option>Property/Tenement Rate</option>
+                                    <option>License Fees</option>
+                                    <option>Wheel Barrow</option>
+                                    <option>Trucks</option>
+                                    <option>CHarges on Abattoirs</option>
+                                    <option>Impounding on Strayed Animals</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="">Paid By <strong style="color:red">*</strong></label>
+                                <input type="text" class="form-control" name="paidby" placeholder="Paid By" value="{{$revenues->paidby}}">
+                            </div>
+                            <div>
+                                <label for="">Collector's Full Name <strong style="color:red">*</strong></label>
+                                <input type="text" class="form-control" name="collectorname"
+                                    placeholder="Collector's Full Name" value="{{$revenues->collectorname}}">
+                            </div>
+                            <div>
+                                <label for="">Collector's Phone <strong style="color:red">*</strong></label>
+                                <input type="tel" class="form-control" name="collectorphone"
+                                    placeholder="Collector's Phone Number" value="{{$revenues->collectorphone}}">
+                            </div>
+
+                            <div>
+                                <label for="">Ledger</label>
+                                <select name="ledger_id" class="form-control">
+                                    <option selected="disabled">Select Ledger</option>
+                                    @foreach ($ledgers as $ledger)
+                                    <option value="{{$ledger->id}}"
+                                        {{$ledger->id==$revenues->ledger_id ? 'selected':''}}>
+                                        {{$ledger->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
 
 
                             <br>
                             <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{ route('purchases.index') }}" class="btn btn-default">Cancel</a>
+                            <a href="{{ route('revenues.index') }}" class="btn btn-default">Cancel</a>
 
                     </div>
                     </form>

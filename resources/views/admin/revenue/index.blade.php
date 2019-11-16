@@ -27,6 +27,7 @@
                                     <th>Amount</th>
                                     <th>Narration</th>
                                     <th>Rev. Type</th>
+                                    <th>Paid By</th>
                                     <th>Collector</th>
                                     <th>Phone</th>
                                     <th>Found In</th>
@@ -44,6 +45,7 @@
 
                                     <td>{{$revenue->narration}}</td>
                                     <td>{{$revenue->revtype}}</td>
+                                    <td>{{$revenue->paidby}}</td>
                                     <td>{{$revenue->collectorname}}</td>
                                     <td>{{$revenue->collectorphone}}</td>
                                     <td>{{$revenue->ledger->name}}</td>
@@ -78,6 +80,7 @@
                                     <th>Amount</th>
                                     <th>Narration</th>
                                     <th>Rev. Type</th>
+                                    <th>Paid By</th>
                                     <th>Collector</th>
                                     <th>Phone</th>
                                     <th>Found In</th>
@@ -108,7 +111,7 @@
                         </div>
                         <div class="modal-body">
 
-                            <input type="hidden" name="revnumber" value="{{'RV'.rand(7955,12995)*1000}}">
+                            <input type="hidden" name="revnumber" value="{{'RV'.rand(955,1295)*100}}">
 
                             <div>
                                 <label for="">MDA <strong style="color:red">*</strong></label>
@@ -143,6 +146,11 @@
                                     <option>CHarges on Abattoirs</option>
                                     <option>Impounding on Strayed Animals</option>
                                 </select>
+                            </div>
+                            <div>
+                                <label for="">Paid By <strong style="color:red">*</strong></label>
+                                <input type="text" class="form-control" name="paidby"
+                                    placeholder="Paid By">
                             </div>
                             <div>
                                 <label for="">Collector's Full Name <strong style="color:red">*</strong></label>

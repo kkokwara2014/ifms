@@ -28,9 +28,7 @@ class RevenueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        
-    }
+    { }
 
     /**
      * Store a newly created resource in storage.
@@ -40,16 +38,16 @@ class RevenueController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'mda_id'=>'required',
-            'ledger_id'=>'required',
-            'amount'=>'required',
-            'narration'=>'required',
-            'revtype'=>'required',
-            'collectorname'=>'required',
-            'collectorname'=>'required',
-            'collectorphone'=>'required',
-            'paidby'=>'required',
+        $this->validate($request, [
+            'mda_id' => 'required',
+            'ledger_id' => 'required',
+            'amount' => 'required',
+            'narration' => 'required',
+            'revtype' => 'required',
+            'collectorname' => 'required',
+            'collectorname' => 'required',
+            'collectorphone' => 'required',
+            'paidby' => 'required',
         ]);
 
 
@@ -91,28 +89,29 @@ class RevenueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $this->validate($request,[
-            'mda_id'=>'required',
-            'ledger_id'=>'required',
-            'amount'=>'required',
-            'narration'=>'required',
-            'revtype'=>'required',
-            'collectorname'=>'required',
-            'collectorname'=>'required',
-            'collectorphone'=>'required',
-            'paidby'=>'required',
+
+        $this->validate($request, [
+            'mda_id' => 'required',
+            'ledger_id' => 'required',
+            'amount' => 'required',
+            'narration' => 'required',
+            'revtype' => 'required',
+            'collectorname' => 'required',
+            'collectorname' => 'required',
+            'collectorphone' => 'required',
+            'paidby' => 'required',
         ]);
 
         $revenue = Revenue::find($id);
         $revenue->ledger_id = $request->ledger_id;
         $revenue->mda_id = $request->mda_id;
-        $revenue->supplier_id = $request->supplier_id;
-        $revenue->stock_id = $request->stock_id;
         $revenue->amount = $request->amount;
-        $revenue->qty = $request->qty;
-        $revenue->description = $request->description;
-        
+        $revenue->narration = $request->narration;
+        $revenue->revtype = $request->revtype;
+        $revenue->collectorname = $request->collectorname;
+        $revenue->collectorphone = $request->collectorphone;
+        $revenue->paidby = $request->paidby;
+
 
         $revenue->save();
 
@@ -127,6 +126,7 @@ class RevenueController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $revenues = Revenue::where('id', $id)->delete();
+        return redirect()->back();
     }
 }
