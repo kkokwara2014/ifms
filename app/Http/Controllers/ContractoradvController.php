@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Contractor;
+use App\Contractoradv;
+use App\Ledger;
 use Illuminate\Http\Request;
 
 class ContractoradvController extends Controller
@@ -13,7 +16,10 @@ class ContractoradvController extends Controller
      */
     public function index()
     {
-        //
+        $ledgers = Ledger::orderBy('created_at', 'asc')->get();
+        $contractors = Contractor::orderBy('created_at', 'asc')->get();
+        $contractoradvs = Contractoradv::orderBy('created_at', 'desc')->get();
+        return view('admin.contractoradv.index', compact('contractoradvs', 'ledgers','contractors'));
     }
 
     /**

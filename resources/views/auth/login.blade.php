@@ -3,13 +3,14 @@
 @section('content')
 <div class="container">
     <h1 class="text-center col-xs-12 col-md-12 col-lg-12">Integrated Financial Management System (IFMS)</h1>
-    <br>
+    
     
     <div class="row justify-content-center">
         <div class="col-md-10">
             <img src="{{asset('bootstrap_assets/dist/img/photo2.png')}}" alt="" class="img-responsive" width="920px" height="100px">
         </div>
     </div>
+    <br>
 
     <div class="row justify-content-center">
 

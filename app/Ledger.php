@@ -40,4 +40,8 @@ class Ledger extends Model
     {
         return $this->hasMany(Accountreceivable::class);
     }
+
+    public function contractoradvances(){
+        return $this->hasMany(Contractoradv::class);
+    }
 }
