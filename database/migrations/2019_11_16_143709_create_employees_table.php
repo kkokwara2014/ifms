@@ -36,7 +36,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('empunion_id');
             $table->integer('rank_id');
             $table->integer('qualification_id');
-            $table->text('empimage')->default('defaultuserimage.jpg');
+            $table->string('empimage')->default('defaultuserimage.jpg');
             $table->tinyInteger('isactive')->default('1');
             $table->timestamps();
         });

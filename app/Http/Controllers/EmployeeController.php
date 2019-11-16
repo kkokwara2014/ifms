@@ -25,7 +25,7 @@ class EmployeeController extends Controller
         $empunions = Empunion::orderBy('created_at', 'asc')->get();
         $qualifications = Qualification::orderBy('created_at', 'asc')->get();
         $employees = Employee::orderBy('created_at', 'desc')->get();
-        return view('admin.employee.index', compact('employees', 'ranks','banks','departments','empunions','qualifications'));
+        return view('admin.employee.index', compact('employees', 'ranks', 'banks', 'departments', 'empunions', 'qualifications'));
     }
 
     /**
@@ -46,7 +46,30 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'fullname' => 'required',
+            'compname' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'designation' => 'required',
+            'dob' => 'required',
+            'gender' => 'required',
+            'maritalstatus' => 'required',
+            'appointmentdate' => 'required',
+            'bank_id' => 'required',
+            'bankaccount' => 'required',
+            'basicsalary' => 'required',
+            'totalallow' => 'required',
+            'department_id' => 'required',
+            'empunion_id' => 'required',
+            'rank_id' => 'required',
+            'qualification_id' => 'required',
+
+        ]);
+
+        Employee::create($request->all());
+        return back();
     }
 
     /**
@@ -74,7 +97,7 @@ class EmployeeController extends Controller
         $empunions = Empunion::orderBy('created_at', 'asc')->get();
         $qualifications = Qualification::orderBy('created_at', 'asc')->get();
         $employees = Employee::where('id', $id)->first();
-        return view('admin.employee.index', compact('employees', 'ranks','banks','departments','empunions','qualifications'));
+        return view('admin.employee.index', compact('employees', 'ranks', 'banks', 'departments', 'empunions', 'qualifications'));
     }
 
     /**
@@ -86,7 +109,40 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'fullname' => 'required',
+            'compname' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'designation' => 'required',
+            'dob' => 'required',
+            'gender' => 'required',
+            'maritalstatus' => 'required',
+            'appointmentdate' => 'required',
+            'bank_id' => 'required',
+            'bankaccount' => 'required',
+            'basicsalary' => 'required',
+            'totalallow' => 'required',
+            'department_id' => 'required',
+            'empunion_id' => 'required',
+            'rank_id' => 'required',
+            'qualification_id' => 'required',
+
+        ]);
+
+        $employee = Employee::find($id);
+        $employee->ledger_id = $request->ledger_id;
+        $employee->supplier_id = $request->supplier_id;
+        $employee->stock_id = $request->stock_id;
+        $employee->amount = $request->amount;
+        $employee->qty = $request->qty;
+        $employee->description = $request->description;
+
+
+        $employee->save();
+
+        return redirect(route('employees.index'));
     }
 
     /**
